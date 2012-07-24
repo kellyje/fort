@@ -1,36 +1,52 @@
 <h2>Welcome</h2>
 <hr/>
 <h3>About</h3>
-<p><span>Fort</span> is a library full of Fantastic Open-source Responsive Tools. The
+<p><span>Fort</span> is a library full of Fundamental Open-source Responsive Tools. The
     components were designed with mobile browsing in mind and should work on Android 2.3+, iOS4+,
     and many others.
 </p>
 
-<h3>Examples</h3>
-<h4>Popup</h4>
+<h3>Popup Examples</h3>
+<h4>Html</h4>
 <pre class="prettyprint">
-    &lt;span class='showPopup'&gt;Click Me&lt;/span&gt;
+    &lt;button id="button1" class="showPopup"&gt;Show Popup!&lt;/button&gt;
+    &lt;button id="button2" class="showPopup"&gt;Show Another Popup!&lt;/button&gt;
 </pre>
-
+<h4>Css</h4>
 <pre class="prettyprint">
     var popup = $(".showPopup").popup();
-    popup.addMenu("showPopup", "Hello World",
+    popup.addMenu("button1", "Hello World!",
         [
             {"name": "Menu Item 1", url: "m1"},
             {"name": "Menu Item 2", id: "m2"},
-            {"name": "Menu Item 3", url: "m3"}
+            {"name": "Link to second button's menu...", id: "button2"}
         ]
     );
+    popup.addMenu("button2", "Hello Again, World!",
+            [
+                {"name": "Another Menu Item 1", url: "am1"},
+                {"name": "Another Menu Item 2", url: "am2"},
+                {"name": "Link to first button's menu...", id: "button1"}
+            ]
+    );
 </pre>
-<span class="showPopup">Click Me</span>
+<button id="button1" class="showPopup btn btn-primary">Show Popup!</button>
+<button id="button2" class="showPopup btn btn-primary">Show Another Popup!</button>
 
 <script>
-//    var popup = $(".showPopup").popup();
-//    popup.addMenu("showPopup", "Hello World",
-//        [
-//            {"name": "Menu Item 1", url: "m1"},
-//            {"name": "Menu Item 2", id: "m2"},
-//            {"name": "Menu Item 3", url: "m3"}
-//        ]
-//    );
+    var popup = $("#button1").popup();
+    popup.addMenu("button1", "Hello World!",
+        [
+            {"name": "Menu Item 1", url: "m1"},
+            {"name": "Menu Item 2", id: "m2"},
+            {"name": "Link to second button's menu...", id: "button2"}
+        ]
+    );
+    popup.addMenu("button2", "Hello Again, World!",
+            [
+                {"name": "Another Menu Item 1", url: "am1"},
+                {"name": "Another Menu Item 2", url: "am2"},
+                {"name": "Link to first button's menu...", id: "button1"}
+            ]
+    );
 </script>

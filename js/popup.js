@@ -50,6 +50,7 @@
                 }
             }
 
+            //TODO: Possibly change this to a data-* field.
             var id = clickedDiv.attr("id");
             //TODO: Fix repetition.
             if ($("#popup").is(":visible") && lastElementClick !== null) {
@@ -65,7 +66,7 @@
             var left = this.getLeft(clickedDiv, popupWrapperDiv);
             popupWrapperDiv.css("left", left);
 
-            var top = clickedDiv.outerHeight(true) + $("#popupArrow").outerHeight();
+            var top = clickedDiv.outerHeight() + clickedDiv.offset().top + (-1*parseInt($("#popupArrow").css("margin-top"),10)); //popupArrow is offset over the border, so this gives easier measurements.
             popupWrapperDiv.css("padding-top", top + "px");
             this.populate(id);
 
@@ -166,7 +167,7 @@
                     var popupHeaderLen = clicked.parents("#popupHeader").length + clicked.is("#popupHeader") ? 1 : 0;
                     var popupContentLen = clicked.parents("#popupContent").length + clicked.is("#popupContent") ? 1 : 0;
                     //TODO: Is passing a jQuery object and grabbing its selector the best way to do this?
-                    var listenerLen = clicked.parents(popupListener.selector).length + clicked.is(popupListener.selector) ? 1 : 0;
+                    var listenerLen = clicked.parents(popupListener).length + clicked.is(popupListener) ? 1 : 0;
                     //console.log(popupHeaderLen + " " + popupContentLen + " " + listenerLen);
                     //console.log(popupListener);
                     if (popupHeaderLen === 0 && popupContentLen === 0 && listenerLen === 0) {
