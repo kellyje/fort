@@ -1,0 +1,204 @@
+/*  Colors */
+@lightCharcoal: #777779;
+@lightGrey: #F1F2F2;
+@darkGrey: #CCCCCC;
+@charcoal: #333335;
+@orange: #D9591E;
+@green: #659A41;
+@blue: #488FCD;
+@red: #991A36;
+@black: #000;
+
+@popupHeaderHeight: 45px;
+@popupCarrotHeight: 14px;
+@popupCarrotWidth: 28px;
+
+@hoverOpacity: .5;
+
+html{
+    font-size: 100%;
+}
+
+.borderBox {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.hover(){
+     &:hover {
+         opacity: @hoverOpacity;
+     }
+ }
+
+#popupWrapper {
+    font-family: verdana, sans-serif;
+    position: fixed;
+    height: 100%;
+    width: 305px;
+    padding-top: @popupCarrotHeight - 4;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    .borderBox;
+}
+
+#popup {
+    position: relative;
+    .borderBox;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    color: @charcoal;
+    visibility: visible;
+
+    a {
+        color: @charcoal;
+    }
+}
+
+#popupHeader {
+    position: absolute;
+    .borderBox;
+    width: 100%;
+    overflow: hidden;
+    z-index: 3;
+    border-bottom: 1px solid @charcoal;
+    line-height: @popupHeaderHeight;
+    font-size: 16/18em;
+    background: #efefef;
+    border-bottom: 2px solid @darkGrey;
+    visibility: visible;
+//box-shadow: 0px 0px 5px #888;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top: 2px solid @darkGrey;
+    border-right: 2px solid @darkGrey;
+    border-left: 2px solid @darkGrey;
+}
+
+#popupArrow {
+    position: absolute;
+    float: left;
+    margin-top: -1* @popupCarrotHeight + 2;
+    margin-left: -1 * (@popupCarrotWidth / 2)-2; /* Half width */
+    visibility: visible;
+    left: 50%;
+    z-index: 5;
+
+    height: @popupCarrotHeight;
+    width: @popupCarrotWidth;
+
+    background: url('../img/popupArrow.png') no-repeat;
+}
+
+.hover(){
+    &:hover {
+        opacity: @hoverOpacity;
+    }
+}
+
+#popupBack, #popupClose{
+    position: absolute;
+    cursor: pointer;
+    height: @popupHeaderHeight;
+    width: @popupHeaderHeight;
+    top: 0;
+    .hover;
+}
+
+#popupBack {
+    left: 0;
+    background: url('../img/popupBack.png') center center no-repeat;
+}
+
+#popupClose {
+    right: 0;
+    background: url('../img/popupClose.png') center center no-repeat;
+}
+
+#popupTitle{
+    padding-right: @popupHeaderHeight - 10;
+    padding-left: @popupHeaderHeight - 10;
+    white-space: nowrap;
+    text-align: center;
+    max-width: 204px;
+    overflow: hidden;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    .borderBox;
+}
+
+#popupContentWrapper {
+    position: relative;
+    padding-top: 44px;
+    height: 100%;
+    width: 100%;
+    .borderBox;
+}
+
+#popupContent {
+    visibility: visible;
+    position: relative;
+    overflow: auto;
+
+    max-height: 100%;
+    width: 100%;
+
+    text-align: left;
+    font-size: 1em;
+    background: #efefef;
+    color: @charcoal;
+
+    border-right: 2px solid @darkGrey;
+    border-bottom: 2px solid @darkGrey;
+    border-left: 2px solid @darkGrey;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    .borderBox;
+
+    .last {
+        border-bottom: none;
+    }
+}
+
+.popupContentRow {
+    border-bottom: 1px solid @darkGrey;
+    padding: 12px 23px;
+    cursor: pointer;
+    display: block;
+}
+
+@media only screen and (max-width:800px) {
+    #popupWrapper {
+        position: absolute;
+    }
+}
+
+@media only screen and (max-width:390px) {
+    #popupWrapper {
+        //width: 90%;
+    }
+}
+
+// ========================================================================
+//                       jScrollPane Specific Css
+// ========================================================================
+//#popupContentWrapper .jspPane{
+//    width: 100% !important;
+//    border-radius: @borderRadius;
+//    box-shadow: 0px 0px 10px @lightCharcoal;
+//}
+//
+//#popupContentWrapper .jspContainer { //TODO: Find better fix.
+//    overflow: visible;
+//}
+//#popupContentWrapper .jspDrag {
+//    background: @lightCharcoal;
+//}
+//
+//#popupContentWrapper .jspCapTop {
+//    display: block;
+//    height: @popupHeaderHeight;
+//}

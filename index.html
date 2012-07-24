@@ -12,6 +12,9 @@
     <link href="./css/bootstrap.css" rel="stylesheet">
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
     <link href="./css/prettify.css" type="text/css" rel="stylesheet" />
+    <link href="./css/jquery.jscrollpane.css" type="text/css" rel="stylesheet" />
+
+    <link href="./css/popup.less" rel="stylesheet/less" type="text/css" />
 
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -28,7 +31,8 @@
     <link rel="shortcut icon" href="img/Icon-36x36.png">
     <meta http-equiv="cleartype" content="on">
 
-    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400|Exo:100,400' rel='stylesheet' type='text/css'>
+    <!--link href='http://fonts.googleapis.com/css?family=Arvo:400,700|Simonetta:400,900|Carter+One' rel='stylesheet' type='text/css'-->
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400' rel='stylesheet' type='text/css'>
 
     <style type="text/css">
         ::selection{
@@ -39,23 +43,31 @@
         body{
             font-size: 100%;
             margin: 0;
-            padding: 40px 4px 0 4px;
+            padding: 30px 4px 0 4px;
+
             font-family: "segoe UI", "verdana", sans-serif;
             color: #333335;
         }
 
         #navigation{
+            position: fixed;
             font-size: 1.3em;
+        }
+
+        #content{
+            padding-left: 200px;
         }
 
         #gitButtons{
             position: fixed;
-            top: 3px;
+            padding-top: 3px;
+            top: 0;
             right: 0;
             white-space: nowrap;
             max-width: 100%;
             overflow: hidden;
             height: 20px;
+            background: #fff;
         }
 
         #gitButtons div{
@@ -63,20 +75,28 @@
             margin-right: 10px;
         }
 
+        h1{
+            font-size: 2.34em;
+            line-height: 1em;
+        }
+
         #projectName{
             display: block;
             color: #991A36;
-            hieght: 36px;
-            /*font-family: 'Josefin Sans', sans-serif;*/
-            /*font-family: 'Exo', sans-serif;
-            font-weight: 900;*/
             overflow: hidden;
+            /*font-family: 'Simonetta', cursive;*/
+            /*font-family: 'Carter One', cursive;*/
         }
 
         #projectName img{
-            height: 24px;
-            width: 24px;
+            height: 36px;
+            width: 36px;
+            vertical-align: middle;
             padding-right: 10px;
+        }
+
+        #projectName span{
+            vertical-align: middle;
         }
 
         p{
@@ -121,6 +141,7 @@
             letter-spacing: .1em;
             font-weight: normal;
             margin-bottom: 6px;
+            font-family: 'Arvo', serif;
         }
 
         legend{
@@ -145,8 +166,8 @@
     </div>
     <div class="container-fluid">
         <div class="row-fluid">
-            <div id="navigation" class="span3">
-                <h1 id="projectName"><img src="./img/Icon-36x36.png" />Fort</h1>
+            <div id="navigation">
+                <h1 id="projectName"><img src="./img/Icon-36x36.png" /><span>Fort</span></h1>
                 <ul>
                     <li>
                         <a id="welcome" href="#welcome">Welcome</a>
@@ -176,22 +197,25 @@
                 </ul>
             </div>
             <div class="row-fluid">
-                <div id="content" class="span6"></div>
+                <div id="content" class="span12"></div>
             </div>
         </div>
     </div>
 
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="./js/bootstrap-transition.js"></script>
-    <script src="./js/bootstrap-modal.js"></script>
-    <script src="./js/bootstrap-dropdown.js"></script>
-    <script src="./js/bootstrap-tab.js"></script>
-    <script src="./js/bootstrap-tooltip.js"></script>
-    <script src="./js/bootstrap-popover.js"></script>
-    <script src="./js/bootstrap-button.js"></script>
-    <script src="./js/bootstrap-collapse.js"></script>
-    <script type="text/javascript" src="./js/prettify.js"></script>
+    <script src="./lib/bootstrap.min.js"></script>
+    <!--script src="./lib/bootstrap-transition.js"></script>
+    <script src="./lib/bootstrap-modal.js"></script>
+    <script src="./lib/bootstrap-dropdown.js"></script>
+    <script src="./lib/bootstrap-tab.js"></script>
+    <script src="./lib/bootstrap-tooltip.js"></script>
+    <script src="./lib/bootstrap-popover.js"></script>
+    <script src="./lib/bootstrap-button.js"></script>
+    <script src="./lib/bootstrap-collapse.js"></script-->
+    <script type="text/javascript" src="./lib/prettify.js"></script>
+    <script type="text/javascript" src="./lib/less.min.js"></script>
+    <script type="text/javascript" src="./js/popup.js"></script>
     <script>
         $("#navigation>ul>li>a").click(function(){
             var navUrl = $(this).attr('href');

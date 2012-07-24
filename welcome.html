@@ -1,19 +1,36 @@
-<h1>Welcome</h1>
+<h2>Welcome</h2>
+<hr/>
+<h3>About</h3>
 <p><span>Fort</span> is a library full of Fantastic Open-source Responsive Tools. The
     components were designed with mobile browsing in mind and should work on Android 2.3+, iOS4+,
     and many others.
+</p>
 
-<pre class="prettyprint">Public static void main(String args[]){
-    System.out.println("Hello World!");
-}
+<h3>Examples</h3>
+<h4>Popup</h4>
+<pre class="prettyprint">
+    &lt;span class='showPopup'&gt;Click Me&lt;/span&gt;
 </pre>
-</p>
 
-<p>
-    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+<pre class="prettyprint">
+    var popup = $(".showPopup").popup();
+    popup.addMenu("showPopup", "Hello World",
+        [
+            {"name": "Menu Item 1", url: "m1"},
+            {"name": "Menu Item 2", id: "m2"},
+            {"name": "Menu Item 3", url: "m3"}
+        ]
+    );
+</pre>
+<span class="showPopup">Click Me</span>
 
-    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-</p>
-<p>
-    Duis eget lorem ac odio lobortis suscipit nec et neque. Sed at quam ut mauris scelerisque congue id eget dui. Quisque tellus lectus, tristique eu posuere in, faucibus vitae urna. Duis vitae orci purus, quis euismod augue. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Morbi lorem arcu, aliquet sed feugiat et, posuere non elit fusce sollicitudin.  Nunc at in hendrerit in vulputate, imperdiet fringilla.
-</p>
+<script>
+//    var popup = $(".showPopup").popup();
+//    popup.addMenu("showPopup", "Hello World",
+//        [
+//            {"name": "Menu Item 1", url: "m1"},
+//            {"name": "Menu Item 2", id: "m2"},
+//            {"name": "Menu Item 3", url: "m3"}
+//        ]
+//    );
+</script>
