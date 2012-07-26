@@ -35,146 +35,170 @@
     <link href='http://fonts.googleapis.com/css?family=Arvo:400' rel='stylesheet' type='text/css'>
 
     <style type="text/css">
-        ::selection{
-            background:#991A36;
-            color: #ffffff;
-        }
 
-        body{
-            font-size: 100%;
-            margin: 0;
-            padding: 10px 4px 0 4px;
 
-            font-family: "segoe UI", "verdana", sans-serif;
-            color: #333335;
-        }
 
-        #navigation{
-            position: fixed;
-            font-size: 1.3em;
-        }
+body{
+	font-size: 100%;
+	margin: 0;
+	padding: 10px 4px 0 4px;
+	line-height: 18px;
+	
+	font-family: "segoe UI", "verdana", sans-serif;
+	color: #333335;
+	background-color: #ffffff;
+}
 
-        #content{
-            padding-top: 10px;
-            padding-left: 200px;
-        }
+::selection{
+	background:#991A36;
+	color: #ffffff;
+}
 
-        #gitButtons{
-            position: fixed;
-            padding-top: 3px;
-            top: 0;
-            right: 0;
-            white-space: nowrap;
-            max-width: 100%;
-            overflow: hidden;
-            height: 20px;
-            background: #fff;
-        }
+.hero-unit {
+  padding: 8px 15px;
+  
+  margin-bottom: 30px;
+  background-color: #eeeeee;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
 
-        #gitButtons div{
-            float:left;
-            margin-right: 10px;
-        }
+.hero-unit h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: inherit;
+}
 
-        h1{
-            font-size: 2.34em;
-            line-height: 1em;
-        }
 
-        #projectName{
-            display: block;
-            color: #991A36;
-            overflow: hidden;
-            /*font-family: 'Simonetta', cursive;*/
-            /*font-family: 'Carter One', cursive;*/
-        }
+#navigation{
+	position: fixed;
+	font-size: 1.3em;
+}
 
-        #projectName img{
-            height: 36px;
-            width: 36px;
-            vertical-align: middle;
-            padding-right: 10px;
-        }
+#content{
+	padding-top: 10px;
+	padding-left: 200px;
+}
 
-        #projectName span{
-            vertical-align: middle;
-        }
+#gitButtons{
+	position: fixed;
+	padding-top: 3px;
+	top: 0;
+	right: 0;
+	white-space: nowrap;
+	max-width: 100%;
+	overflow: hidden;
+	height: 20px;
+	background: #fff;
+}
 
-        p{
-            font-size: .875em;
-        }
+#gitButtons div{
+	float:left;
+	margin-right: 10px;
+}
 
-        ul{
-            list-style: none;
-            margin: 0;
-        }
+h1{
+	font-size: 2.34em;
+	line-height: 1em;
+}
 
-        ul a{
-            line-height: 1.8em;
-        }
+#projectName{
+	display: block;
+	color: #991A36;
+	overflow: hidden;
+	/*font-family: 'Simonetta', cursive;*/
+	/*font-family: 'Carter One', cursive;*/
+}
 
-        ul li ul{
-            margin-top: -5px;
-            font-size: .875em;
-            margin-left: 15px;
-        }
+#projectName img{
+	height: 36px;
+	width: 36px;
+	vertical-align: middle;
+	padding-right: 10px;
+}
 
-        ul li ul a:before{
-            content: '- ';
-        }
+#projectName span{
+	vertical-align: middle;
+}
 
-        ul li ul a{
-            font-size: .875em;
-            line-height: 1em;
-        }
+p{
+	font-size: .875em;
+}
 
-        a{
-            /*color: #488FCD;*/
-        }
+ul{
+	list-style: none;
+	margin: 0;
+}
 
-        a:hover{
-            color: #D9591E;
-            text-decoration: none;
-        }
+ul a{
+	line-height: 1.8em;
+}
 
-        h1,h2,h3,h4,h5,h6{
-            letter-spacing: .1em;
-            font-weight: normal;
-            margin-bottom: 6px;
-            font-family: 'Arvo', serif;
-        }
+ul li ul{
+	margin-top: -5px;
+	font-size: .875em;
+	margin-left: 15px;
+}
 
-        h1{
-            color: #991A36;
-        }
+ul li ul a:before{
+	content: '- ';
+}
 
-        h2{
-            color: #D9591E;
-        }
+ul li ul a{
+	font-size: .875em;
+	line-height: 1em;
+}
 
-        h3{
-            color: #659A41;
-        }
+a{
+	/*color: #488FCD;*/
+}
 
-        h4{
-            color: #488FCD;
-        }
+a:hover{
+	color: #D9591E;
+	text-decoration: none;
+}
 
-        h5{
+h1,h2,h3,h4,h5,h6{
+	letter-spacing: .1em;
+	font-weight: normal;
+	margin-bottom: 4px;
+	font-family: 'Arvo', serif;
+}
 
-        }
+h1{
+	color: #991A36;
+}
 
-        h6{
+h2{
+	color: #D9591E;
+}
 
-        }
+h3{
+	color: #659A41;
+}
 
-        legend{
-            color: #488FCD;
-        }
+h4{
+	color: #488FCD;
+}
 
-        hr{
-            margin: 0 0 12px 0;
-        }
+h5{
+
+}
+
+h6{
+
+}
+
+legend{
+	color: #488FCD;
+}
+
+hr{
+	margin: 0 0 12px 0;
+}
     </style>
 </head>
 <body onload="prettyPrint()">
@@ -198,28 +222,20 @@
                 <h1 id="projectName"><img src="./img/Icon-36x36.png" /><span>Fort</span></h1>
                 <ul>
                     <li>
-                        <a id="welcome" href="#welcome">Welcome</a>
-                        <ul>
-                            <li>
-                                <a href="#about">About</a>
-                            </li>
-                            <li>
-                                <a href="#examples">Examples</a>
-                            </li>
-                        </ul>
+                        <a id="about" href="#about">About</a>
                     </li>
                     <li>
                         <a id="components" href="#components">Components</a>
                         <ul>
                             <li>
-                                <a href="#about">Popup</a>
+                                <a href="#components-popup">Popup</a>
                             </li>
                             <li>
-                                <a href="#examples">Navigator</a>
+                                <a href="#components-navigator">Navigator</a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="#themes">Themes</a></li>
+                    <!--li><a href="#themes">Themes</a></li-->
                     <li><a href="#documentation">Documentation</a></li>
                     <li><a href="#changelog">Changelog</a></li>
                 </ul>
@@ -245,14 +261,16 @@
     <script type="text/javascript" src="./lib/less.min.js"></script>
     <script type="text/javascript" src="./js/popup.js"></script>
     <script>
-        $("#navigation>ul>li>a").click(function(){
+        $("#navigation>ul>li>a").click(function(){			
             var navUrl = $(this).attr('href');
             //console.log(navUrl.substr(navUrl.indexOf('#')+1));
             $("#content").load("./"+navUrl.substr(navUrl.indexOf('#')+1)+".html", function(){prettyPrint();});
+			$("body").scrollTop(0);
+			return false;
         });
 
         $(document).ready(function(){
-            $("#welcome").trigger("click");
+            $("#about").trigger("click");
         });
     </script>
 </body>

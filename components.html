@@ -1,9 +1,79 @@
-<h2>Components</h2>
-<p>The future placement of Fort component description page.</p>
+<div class="page-header">
+	<h2>Components</h2>
+	<p>The following components are the tools included in the Fort library.</p>
+</div>
 
-<h3>Popup</h3>
+<h2 id="components-popup">
+	Popup
+	<small>fort-popup.js</small>
+</h2>
+<div class="row-fluid">
+<span class="span3 columns">
+	<p>To use the Popup, include the required javascript and css files, and initiate it by calling one of the following:</p>
+	<a href="https://raw.github.com/FoundOPS/fort/master/js/fort-popup.js" class="btn">Download</a>
+</span>
 
-<form class="form-vertical">
+<span class="span9 columns">
+	<h4>The jQuery plugin</h4>
+	<pre class="prettyprint">	$(".showPopup").popup();</pre>
+
+	<h4>Creating a javascript object</h4>
+	<pre class="prettyprint">	var p = new Popup(".showPopup");</pre>
+</span>
+</div>
+<p><span class="label label-info">Note:</span> The class <code>.showPopup</code> can be replaced with any class name, as long as the class used in the markup matches the class used in initiating the popup.</p>
+
+<h3>Example</h3>
+<p><button id="button1" class="showPopup btn">Show Popup!</button>
+<a id="button2" class="showPopup btn">Show Another Popup!</a></p>
+<h4>Html</h4>
+<pre class="prettyprint lang-html">
+    &lt;button id="menu1" class="showPopup"&gt;Show Popup!&lt;/button&gt;
+    &lt;button id="menu2" class="showPopup"&gt;Show Another Popup!&lt;/button&gt;
+</pre>
+<h4>Javascript</h4>
+<pre class="prettyprint lang-js">
+    var popup = $(".showPopup").popup();
+    popup.addMenu("menu1", "Hello World!",
+        [
+            {"name": "Menu Item 1", url: "m1"},
+            {"name": "Menu Item 2", id: "m2"},
+            {"name": "Link to second button's menu...", id: "menu2"}
+        ]
+    );
+    popup.addMenu("menu2", "Hello Again, World!",
+            [
+                {"name": "Another Menu Item 1", url: "am1"},
+                {"name": "Another Menu Item 2", url: "am2"},
+                {"name": "Link to first button's menu...", id: "menu1"}
+            ]
+    );
+</pre>
+<script>
+    var popup = $(".showPopup").popup();
+    popup.addMenu("menu1", "Hello World!",
+        [
+            {"name": "Menu Item 1", url: "m1"},
+            {"name": "Menu Item 2", id: "m2"},
+            {"name": "Link to second button's menu...", id: "menu2"}
+        ]
+    );
+    popup.addMenu("menu1", "Hello Again, World!",
+            [
+                {"name": "Another Menu Item 1", url: "am1"},
+                {"name": "Another Menu Item 2", url: "am2"},
+                {"name": "Link to first button's menu...", id: "menu2"}
+            ]
+    );
+</script>
+
+<h3>Events</h3>
+<p>Future location of popup events.</p>
+
+<h3>Popup w/ jScrollPane Plugin</h3>
+<p>Future location showing integration with the jScrollPane jQuery plugin.</p>
+
+<!--form class="form-vertical">
     <fieldset>
         <legend>Create Menu</legend>
         <div class="control-group">
@@ -33,7 +103,10 @@
             </div>
         </div>
     </fieldset>
-</form>
-
-<h3>Navigator</h3>
+</form-->
+<hr>
+<h2 id="components-navigator">
+	Navigator
+	<small>fort-navigator.js</small>
+</h2>
 <p>Future location of navigator description/use cases.</p>

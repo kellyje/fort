@@ -2,9 +2,8 @@
     (function( $ ){
         $.fn.popup = function( options ) {
             // Create some defaults, extending them with any options that were provided
-            var settings = $.extend({}, options);
-            var popup = new Popup(this.selector);
-            return popup;
+            //var settings = $.extend({}, options);
+            return new Popup(this.selector);
         };
     })( jQuery );
 
@@ -23,6 +22,7 @@
             return;
         }
         var listenerElements = $(popupListener);
+		listenerElements.css("cursor", "pointer");
         listenerElements.click(function (e) {
             thisPopup.toggleVisible(e, $(this));
         });
@@ -80,11 +80,11 @@
 
         //Function returns the left offset of the popup and sets the carrot element's position.
         this.getLeft = function (target, popupDiv) {
-            var padding = 4;
+            var padding = 3;
             currentTarget = target;
             var x = target.offset().left + target.outerWidth() / 2;
-            var rightOffset = x + popupDiv.outerWidth() / 2 + padding;
-            var offset = x - popupDiv.outerWidth() / 2 + padding;
+            var rightOffset = x + popupDiv.outerWidth() / 2;
+            var offset = x - popupDiv.outerWidth() / 2 + padding + 1; //TODO: Figure out where the 1 extra pixel is.. could just be rounding.
             var windowWidth = $(window).width();
 
             //Sets popup variables referenced in resize listener.

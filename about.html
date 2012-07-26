@@ -1,0 +1,46 @@
+<div class="page-header">
+	<h2>About</h2>
+
+</div>
+	<div class="row-fluid">
+	<span class="span5">
+		<p><b>Fort</b> is a growing library of Fundamental Open-source Responsive Tools. The
+		components were designed with mobile browsing in mind and should work on Android 2.3+, iOS4+,
+		and many others.</p>
+	</span>
+	<span class="span7">
+		<div class="hero-unit">
+		  <h3>Download</h3>
+		  <p>Click on the links below to go to the Fort github repository or download it as a zip.</p>
+		  <p>
+			<a href="https://github.com/FoundOPS/fort" class="btn btn-primary">Github</a>
+			<a href="https://github.com/FoundOPS/fort/zipball/master" class="btn btn-primary">.zip</a>
+		  </p>
+		</div>
+	</span>
+	</div>
+<hr>
+<div class="well">
+<h3>Popup Examples</h3>
+	<p><a id="button1" class="showPopup">Popups</a> will work on any element with the class set to the selector passed in the jQuery plugin initialization.</p>
+	<p><button id="button2" class="showPopup btn">Show Popup!</button>
+</div>
+
+<script>
+	//TODO: Move out as popup-ex1.js
+    var popup = $(".showPopup").popup();
+    popup.addMenu("button1", "Hello World!",
+        [
+            {"name": "Menu Item 1", url: "m1"},
+            {"name": "Menu Item 2", id: "m2"},
+            {"name": "Link to second button's menu...", id: "button2"}
+        ]
+    );
+    popup.addMenu("button2", "Hello Again, World!",
+            [
+                {"name": "Another Menu Item 1", url: "am1"},
+                {"name": "Another Menu Item 2", url: "am2"},
+                {"name": "Link to first button's menu...", id: "button1"}
+            ]
+    );
+</script>
