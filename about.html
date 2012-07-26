@@ -1,10 +1,9 @@
 <div class="page-header">
 	<h2>About</h2>
-
 </div>
-	<div class="row-fluid">
+<div class="row-fluid">
 	<span class="span5">
-		<p><b>Fort</b> is a growing library of Fundamental Open-source Responsive Tools. The
+		<p class="about"><b>Fort</b> is a growing library of Fundamental Open-source Responsive Tools. The
 		components were designed with mobile browsing in mind and should work on Android 2.3+, iOS4+,
 		and many others.</p>
 	</span>
@@ -18,14 +17,16 @@
 		  </p>
 		</div>
 	</span>
-	</div>
+</div>
 <hr>
 <div class="well">
-<h3>Popup Examples</h3>
+	<h3>Popup Examples</h3>
 	<p><a id="button1" class="showPopup">Popups</a> will work on any element with the class set to the selector passed in the jQuery plugin initialization.</p>
-	<p><button id="button2" class="showPopup btn">Show Popup!</button>
+	<p><button id="button2" class="showPopup btn">Show Popup!</button></p>
 </div>
 
+<script src="./lib/jquery.jScrollPane.js"></script>
+<script src="./lib/jquery.mousewheel.js"></script>
 <script>
 	//TODO: Move out as popup-ex1.js
     var popup = $(".showPopup").popup();
@@ -43,4 +44,16 @@
                 {"name": "Link to first button's menu...", id: "button1"}
             ]
     );
+	
+	$(document).on("popup.created", function () {
+		$("#popupContentWrapper").jScrollPane({
+			horizontalGutter: 0,
+			verticalGutter: 0,
+			'showArrows': false
+		});
+	});
+
+	$(document).on('popup.setContent popup.visible popup.resize', function (e) {
+		$("#popupContentWrapper").data('jsp').reinitialise();
+	});
 </script>

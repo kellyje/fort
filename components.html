@@ -10,22 +10,25 @@
 <div class="row-fluid">
 <span class="span3 columns">
 	<p>To use the Popup, include the required javascript and css files, and initiate it by calling one of the following:</p>
-	<a href="https://raw.github.com/FoundOPS/fort/master/js/fort-popup.js" class="btn">Download</a>
+	<p><a href="https://raw.github.com/FoundOPS/fort/master/js/fort-popup.js" class="btn">Download</a></p>
 </span>
 
 <span class="span9 columns">
 	<h4>The jQuery plugin</h4>
-	<pre class="prettyprint">	$(".showPopup").popup();</pre>
+	<p><pre class="prettyprint">	$(".showPopup").popup();</pre></p>
 
 	<h4>Creating a javascript object</h4>
-	<pre class="prettyprint">	var p = new Popup(".showPopup");</pre>
+	<p><pre class="prettyprint">	var p = new Popup(".showPopup");</pre></p>
 </span>
 </div>
-<p><span class="label label-info">Note:</span> The class <code>.showPopup</code> can be replaced with any class name, as long as the class used in the markup matches the class used in initiating the popup.</p>
+<p>
+	<span class="label label-info">Note:</span> The class <code>.showPopup</code> can be replaced with any class name, as long as the 
+	class used in the markup matches the class used in initiating the popup.
+</p>
 
 <h3>Example</h3>
-<p><button id="button1" class="showPopup btn">Show Popup!</button>
-<a id="button2" class="showPopup btn">Show Another Popup!</a></p>
+<p><button id="menu1" class="showPopup btn">Show Popup!</button>
+<a id="menu2" class="showPopup btn">Show Another Popup!</a></p>
 <h4>Html</h4>
 <pre class="prettyprint lang-html">
     &lt;button id="menu1" class="showPopup"&gt;Show Popup!&lt;/button&gt;
@@ -58,21 +61,76 @@
             {"name": "Link to second button's menu...", id: "menu2"}
         ]
     );
-    popup.addMenu("menu1", "Hello Again, World!",
+    popup.addMenu("menu2", "Hello Again, World!",
             [
                 {"name": "Another Menu Item 1", url: "am1"},
                 {"name": "Another Menu Item 2", url: "am2"},
-                {"name": "Link to first button's menu...", id: "menu2"}
+                {"name": "Link to first button's menu...", id: "menu1"}
             ]
     );
 </script>
 
 <h3>Events</h3>
-<p>Future location of popup events.</p>
+<p>The following are jQuery custom events fired at different times within the popup:</p>
+<p><table class="table table-bordered table-striped">
+	<thead>
+		 <tr>
+		   <th style="width: 150px;">Event</th>
+		   <th>Description</th>
+		   <th>Objects Passed</th>
+		 </tr>
+		</thead>
+		<tbody>
+		 <tr>
+		   <td>popup.created</td>
+		   <td>This event is fired at the end of the createPopup function.</td>
+		   <td class="muted">None</td>
+		 </tr>
+		 <tr>
+		   <td>popup.resize</td>
+		   <td>This event is fired when the window is resized (redundant event, will be removed in future release).</td>
+		   <td class="muted">None</td>
+		 </tr>
+		 <tr>
+		   <td>popup.setContent</td>
+		   <td>This event is fired at the end of the setContent function, showing the contents have been modified.</td>
+		   <td class="muted">None</td>
+		 </tr>
+		 <tr>
+		   <td>popup.visible</td>
+		   <td>This event is fired at the end of the toggleVisible function and fires when the popup is visible to the user. (Currently does not wait css transitions to complete).</td>
+		   <td class="muted">None</td>
+		 </tr>
+		 <tr>
+		   <td>popup.menuClicked</td>
+		   <td>This event is fired when a menu item in the popup has been clicked.</td>
+		   <td class="muted">None</td>
+		 </tr>
+	</tbody>
+</table></p>
 
 <h3>Popup w/ jScrollPane Plugin</h3>
-<p>Future location showing integration with the jScrollPane jQuery plugin.</p>
+<p>
+	The popup can be easily integrated with the jScrollPane jQuery plugin. This adds mobile functionality 
+	to scrolling divs and adds more customizability to the look and feel of the popup.
+</p>
+<p>
+<h4>Javascript</h4>
+<pre class="prettyprint lang-js">
+	//To initialise, use the code below:
+	$(document).on("popup.created", function () {
+		$("#popupContentWrapper").jScrollPane({
+			horizontalGutter: 0,
+			verticalGutter: 0,
+			'showArrows': false
+		});
+	});
 
+	$(document).on('popup.setContent popup.visible popup.resize', function (e) {
+		$("#popupContentWrapper").data('jsp').reinitialise();
+	});
+</pre>
+</p>
 <!--form class="form-vertical">
     <fieldset>
         <legend>Create Menu</legend>

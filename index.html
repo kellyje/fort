@@ -42,7 +42,7 @@ body{
 	font-size: 100%;
 	margin: 0;
 	padding: 10px 4px 0 4px;
-	line-height: 18px;
+	line-height: 22px;
 	
 	font-family: "segoe UI", "verdana", sans-serif;
 	color: #333335;
@@ -79,6 +79,7 @@ body{
 }
 
 #content{
+	font-size: .875em;
 	padding-top: 10px;
 	padding-left: 200px;
 }
@@ -125,7 +126,7 @@ h1{
 }
 
 p{
-	font-size: .875em;
+	/*font-size: .875em;*/
 }
 
 ul{
@@ -199,6 +200,19 @@ legend{
 hr{
 	margin: 0 0 12px 0;
 }
+
+.about{
+	font-size: 1.1428571428571428571428571428571em;
+	line-height: 1.5em;
+}
+
+.btn{
+	margin-bottom: 4px;
+}
+
+table{
+	/*font-size: .875em;*/
+}
     </style>
 </head>
 <body onload="prettyPrint()">
@@ -261,7 +275,7 @@ hr{
     <script type="text/javascript" src="./lib/less.min.js"></script>
     <script type="text/javascript" src="./js/popup.js"></script>
     <script>
-        $("#navigation>ul>li>a").click(function(){			
+        $("#navigation>ul>li>a").click(function(){
             var navUrl = $(this).attr('href');
             //console.log(navUrl.substr(navUrl.indexOf('#')+1));
             $("#content").load("./"+navUrl.substr(navUrl.indexOf('#')+1)+".html", function(){prettyPrint();});

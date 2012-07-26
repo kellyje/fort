@@ -66,7 +66,8 @@
             var left = this.getLeft(clickedDiv, popupWrapperDiv);
             popupWrapperDiv.css("left", left);
 
-            var top = clickedDiv.outerHeight() + clickedDiv.offset().top + (-1*parseInt($("#popupArrow").css("margin-top"),10)); //popupArrow is offset over the border, so this gives easier measurements.
+			//console.log("scroll top: "+$(window).scrollTop());
+            var top = clickedDiv.outerHeight() + clickedDiv.offset().top - $(window).scrollTop() + (-1*parseInt($("#popupArrow").css("margin-top"),10)); //popupArrow is offset over the border, so this gives easier measurements.
             popupWrapperDiv.css("padding-top", top + "px");
             this.populate(id);
 
@@ -154,6 +155,9 @@
                     if ($("#popup").is(":visible")) {
                         var left = thisPopup.getLeft(currentTarget, popupWrapperDiv);
                         popupWrapperDiv.css("left", left);
+						//TODO: Move to getTop.
+						var top = $(currentTarget).outerHeight() + $(window).scrollTop() - $(currentTarget).offset().top + (-1*parseInt($("#popupArrow").css("margin-top"),10)); //popupArrow is offset over the border, so this gives easier measurements.
+						popupWrapperDiv.css("padding-top", top + "px");
                     }
                 }
             );
