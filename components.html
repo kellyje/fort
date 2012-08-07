@@ -6,24 +6,37 @@
 <h2 id="components-popup">
 	Popup
 	<small>fort-popup.js</small>
+
+    <p style="float: right;"><a href="https://raw.github.com/FoundOPS/fort/master/js/fort-popup.js" class="btn">Download</a></p>
 </h2>
 <div class="row-fluid">
 <span class="span3 columns">
-	<p>To use the Popup, include the required javascript and css files, and initiate it by calling one of the following:</p>
-	<p><a href="https://raw.github.com/FoundOPS/fort/master/js/fort-popup.js" class="btn">Download</a></p>
+	<p>To use the Popup, first include the required javascript and css files.</p>
+    <p>Next, create the popup with either a jQuery plugin call,
+        or by creating a classic javascript object:</p>
 </span>
 
 <span class="span9 columns">
 	<h4>The jQuery plugin</h4>
-	<p><pre class="prettyprint">	$(".showPopup").popup();</pre></p>
+	<p><pre class="prettyprint">
+    var menu1 = {
+        id: "menu1", title: "Hello World",
+        contents: [
+            {name: "Item 1"},
+            {name: "Item 2"},
+            {name: "Item 3"}]
+        });
+    $("#menu1").popup(menu1);</pre></p>
 
 	<h4>Creating a javascript object</h4>
-	<p><pre class="prettyprint">	var p = new Popup(".showPopup");</pre></p>
+	<p><pre class="prettyprint">
+    var p = new Popup("#menu1");
+    p.addMenu(menu1);</pre></p>
 </span>
 </div>
 <p>
-	<span class="label label-info">Note:</span> The class <code>.showPopup</code> can be replaced with any class name, as long as the 
-	class used in the markup matches the class used in initiating the popup.
+	<span class="label label-info">Note:</span> The id <code>#menu1</code> is also the name linked to the first menu for
+    that button. To access the starting menus from other buttons, just set the menu item's id to the starting menu's id.
 </p>
 
 <h3>Example</h3>
@@ -31,8 +44,8 @@
 <a id="menu2" class="showPopup btn">Show Another Popup!</a></p>
 <h4>Html</h4>
 <pre class="prettyprint lang-html">
-    &lt;button id="menu1" class="showPopup"&gt;Show Popup!&lt;/button&gt;
-    &lt;button id="menu2" class="showPopup"&gt;Show Another Popup!&lt;/button&gt;
+    &lt;button id="menu1"&gt;Show Popup!&lt;/button&gt;
+    &lt;button id="menu2"&gt;Show Another Popup!&lt;/button&gt;
 </pre>
 <h4>Javascript</h4>
 <pre class="prettyprint lang-js">
