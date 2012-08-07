@@ -1,5 +1,6 @@
 /*  Colors */
 @lightCharcoal: #777779;
+@lighterGrey: #FAFAFA;
 @lightGrey: #F1F2F2;
 @darkGrey: #CCCCCC;
 @charcoal: #333335;
@@ -48,7 +49,7 @@ html{
     .borderBox;
     height: 100%;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     color: @charcoal;
     visibility: visible;
 
@@ -66,7 +67,7 @@ html{
     border-bottom: 1px solid @charcoal;
     line-height: @popupHeaderHeight;
     font-size: 16/18em;
-    background: #efefef;
+    background: @lighterGrey;
     border-bottom: 2px solid @darkGrey;
     visibility: visible;
 //box-shadow: 0px 0px 5px #888;
@@ -75,6 +76,7 @@ html{
     border-top: 2px solid @darkGrey;
     border-right: 2px solid @darkGrey;
     border-left: 2px solid @darkGrey;
+    height: 49px;
 }
 
 #popupArrow {
@@ -118,11 +120,9 @@ html{
 }
 
 #popupTitle{
-    padding-right: @popupHeaderHeight - 10;
-    padding-left: @popupHeaderHeight - 10;
     white-space: nowrap;
     text-align: center;
-    max-width: 204px;
+    max-width: 225px;
     overflow: hidden;
     margin: 0 auto;
     height: 100%;
@@ -132,7 +132,8 @@ html{
 
 #popupContentWrapper {
     position: relative;
-    padding-top: 44px;
+    overflow: visible !important;
+    padding-top: 49px;
     height: 100%;
     width: 100%;
     .borderBox;
@@ -148,7 +149,7 @@ html{
 
     text-align: left;
     font-size: 1em;
-    background: #efefef;
+    background: @lighterGrey;
     color: @charcoal;
 
     border-right: 2px solid @darkGrey;
@@ -160,14 +161,15 @@ html{
 
     .last {
         border-bottom: none;
+        padding-bottom: 13px;
     }
 }
 
 .popupContentRow {
-    border-bottom: 1px solid @darkGrey;
-    padding: 12px 23px;
-    cursor: pointer;
     display: block;
+    cursor: pointer;
+    padding: 12px 23px;
+    border-bottom: 1px solid @darkGrey;
 }
 
 @media only screen and (max-width:800px) {
@@ -183,14 +185,15 @@ html{
 }
 
 // ========================================================================
-//                       jScrollPane Specific Css
+//                        jScrollPane Specific Css
 // ========================================================================
 #popupContentWrapper .jspPane{
     width: 100% !important;
-    border-radius: 6px;
+    border-radius: 8px;
+    background: @lighterGrey;
     box-shadow: 0px 0px 10px @lightCharcoal;
 }
-//
+
 #popupContentWrapper .jspContainer { //TODO: Find better fix.
     overflow: visible;
 }
@@ -200,5 +203,5 @@ html{
 
 #popupContentWrapper .jspCapTop {
     display: block;
-    height: @popupHeaderHeight+2;
+    height: @popupHeaderHeight;
 }

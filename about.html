@@ -29,21 +29,26 @@
 <script src="./lib/jquery.mousewheel.js"></script>
 <script>
 	//TODO: Move out as popup-ex1.js
-    var popup = $(".showPopup").popup();
-    popup.addMenu("button1", "Hello World!",
-        [
-            {"name": "Menu Item 1", url: "m1"},
-            {"name": "Menu Item 2", id: "m2"},
-            {"name": "Link to second button's menu...", id: "button2"}
+    $("#button1").popup({
+        id:"button1",
+        title:"Hello World!",
+        contents: [
+                {"name": "Menu Item 1", url: "m1"},
+                {"name": "Menu Item 2", id: "m2"},
+                {"name": "Link to second button's menu...", id: "button2"}
         ]
-    );
-    popup.addMenu("button2", "Hello Again, World!",
-            [
+    });
+
+    //TODO: Fix popup so that misspelled object attr's throw errors.
+    $("#button2").popup({
+        id: "button2",
+        title: "Hello Again, World!",
+        contents: [
                 {"name": "Another Menu Item 1", url: "am1"},
                 {"name": "Another Menu Item 2", url: "am2"},
                 {"name": "Link to first button's menu...", id: "button1"}
-            ]
-    );
+        ]
+    });
 	
 	$(document).on("popup.created", function () {
 		$("#popupContentWrapper").jScrollPane({

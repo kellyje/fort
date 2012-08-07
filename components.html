@@ -36,37 +36,45 @@
 </pre>
 <h4>Javascript</h4>
 <pre class="prettyprint lang-js">
-    var popup = $(".showPopup").popup();
-    popup.addMenu("menu1", "Hello World!",
-        [
+    $("#menu1").popup({
+        id: "menu1",
+        title: "Hello World!",
+        contents: [
             {"name": "Menu Item 1", url: "m1"},
             {"name": "Menu Item 2", id: "m2"},
             {"name": "Link to second button's menu...", id: "menu2"}
         ]
-    );
-    popup.addMenu("menu2", "Hello Again, World!",
-            [
+    });
+    $("#menu2").popup({
+        id:"menu2",
+        title: "Hello Again, World!",
+        contents: [
                 {"name": "Another Menu Item 1", url: "am1"},
                 {"name": "Another Menu Item 2", url: "am2"},
                 {"name": "Link to first button's menu...", id: "menu1"}
             ]
+        }
     );
 </pre>
 <script>
-    var popup = $(".showPopup").popup();
-    popup.addMenu("menu1", "Hello World!",
-        [
+    $("#menu1").popup({
+        id: "menu1",
+        title: "Hello World!",
+        contents: [
             {"name": "Menu Item 1", url: "m1"},
             {"name": "Menu Item 2", id: "m2"},
             {"name": "Link to second button's menu...", id: "menu2"}
         ]
-    );
-    popup.addMenu("menu2", "Hello Again, World!",
-            [
-                {"name": "Another Menu Item 1", url: "am1"},
-                {"name": "Another Menu Item 2", url: "am2"},
-                {"name": "Link to first button's menu...", id: "menu1"}
-            ]
+    });
+    $("#menu2").popup({
+                id:"menu2",
+                title: "Hello Again, World!",
+                contents: [
+                    {"name": "Another Menu Item 1", url: "am1"},
+                    {"name": "Another Menu Item 2", url: "am2"},
+                    {"name": "Link to first button's menu...", id: "menu1"}
+                ]
+            }
     );
 </script>
 
