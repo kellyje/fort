@@ -37,6 +37,7 @@
     //TODO: Refactor; Give a namespace.
     var menus = [];
     var lastElementClick = null;
+    var currentTarget = null;
     /** Popup Constructor **/
     function Popup(popupListener) {
         //Note: Making history a global broke on Android 2.3
@@ -45,7 +46,6 @@
         var title = "";
         var content = "";
         var object = null;
-        var currentTarget = null;
 
         if((typeof(popupListener)==='undefined') || popupListener === null){
             console.log("ERROR: No listener passed!");
