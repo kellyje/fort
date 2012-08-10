@@ -1,4 +1,4 @@
 fort
 ====
 
-FORT: Fantastic open-source reactive tools (for HTML and javascript)
+FORT: Fundamental open-source reactive tools (for HTML and javascript)
