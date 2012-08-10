@@ -2,218 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+
     <title>Fort Library</title>
+
     <meta name="description" content="">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-
     <link href="./css/bootstrap.css" rel="stylesheet">
     <link href="./css/bootstrap-responsive.css" rel="stylesheet">
     <link href="./css/prettify.css" type="text/css" rel="stylesheet" />
     <link href="./css/jquery.jscrollpane.css" type="text/css" rel="stylesheet" />
-
     <link href="./css/popup.less" rel="stylesheet/less" type="text/css" />
+    <link href="./css/main.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Home screen icon  Mathias Bynens mathiasbynens.be/notes/touch-icons -->
-    <!-- For iPhone 4 with high-resolution Retina display: -->
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/Icon-96x96.png">
-    <!-- For first-generation iPad: -->
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/Icon-72x72.png">
-    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
     <link rel="apple-touch-icon-precomposed" href="img/Icon-36x36.png">
-    <!-- For nokia devices: -->
     <link rel="shortcut icon" href="img/Icon-36x36.png">
     <meta http-equiv="cleartype" content="on">
-
-    <!--link href='http://fonts.googleapis.com/css?family=Arvo:400,700|Simonetta:400,900|Carter+One' rel='stylesheet' type='text/css'-->
     <link href='http://fonts.googleapis.com/css?family=Arvo:400' rel='stylesheet' type='text/css'>
-
-    <style type="text/css">
-
-
-
-body{
-	font-size: 100%;
-	margin: 0;
-	padding: 10px 4px 0 4px;
-	line-height: 22px;
-	
-	font-family: "segoe UI", "verdana", sans-serif;
-	color: #333335;
-	background-color: #ffffff;
-}
-
-::selection{
-	background:#991A36;
-	color: #ffffff;
-}
-
-.hero-unit {
-  padding: 8px 15px;
-  
-  margin-bottom: 30px;
-  background-color: #eeeeee;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-}
-
-.hero-unit h1 {
-  margin-bottom: 0;
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-  color: inherit;
-}
-
-
-#navigation{
-	position: fixed;
-	font-size: 1.3em;
-}
-
-#content{
-	font-size: .875em;
-	padding-top: 10px;
-	padding-left: 200px;
-}
-
-#gitButtons{
-	position: fixed;
-	padding-top: 3px;
-	top: 0;
-	right: 0;
-	white-space: nowrap;
-	max-width: 100%;
-	overflow: hidden;
-	height: 20px;
-	background: #fff;
-}
-
-#gitButtons div{
-	float:left;
-	margin-right: 10px;
-}
-
-h1{
-	font-size: 2.34em;
-	line-height: 1em;
-}
-
-#projectName{
-	display: block;
-	color: #991A36;
-	overflow: hidden;
-	/*font-family: 'Simonetta', cursive;*/
-	/*font-family: 'Carter One', cursive;*/
-}
-
-#projectName img{
-	height: 36px;
-	width: 36px;
-	vertical-align: middle;
-	padding-right: 10px;
-}
-
-#projectName span{
-	vertical-align: middle;
-}
-
-p{
-	/*font-size: .875em;*/
-}
-
-ul{
-	list-style: none;
-	margin: 0;
-}
-
-ul a{
-	line-height: 1.8em;
-}
-
-ul li ul{
-	margin-top: -5px;
-	font-size: .875em;
-	margin-left: 15px;
-}
-
-ul li ul a:before{
-	content: '- ';
-}
-
-ul li ul a{
-	font-size: .875em;
-	line-height: 1em;
-}
-
-a{
-	/*color: #488FCD;*/
-}
-
-a:hover{
-	color: #D9591E;
-	text-decoration: none;
-}
-
-h1,h2,h3,h4,h5,h6{
-	letter-spacing: .1em;
-	font-weight: normal;
-	margin-bottom: 4px;
-	font-family: 'Arvo', serif;
-}
-
-h1{
-	color: #991A36;
-}
-
-h2{
-	color: #D9591E;
-}
-
-h3{
-	color: #659A41;
-}
-
-h4{
-	color: #488FCD;
-}
-
-h5{
-
-}
-
-h6{
-
-}
-
-legend{
-	color: #488FCD;
-}
-
-hr{
-	margin: 0 0 12px 0;
-}
-
-.about{
-	font-size: 1.1428571428571428571428571428571em;
-	line-height: 1.5em;
-}
-
-.btn{
-	margin-bottom: 4px;
-}
-
-table{
-	/*font-size: .875em;*/
-}
-    </style>
 </head>
 <body onload="prettyPrint()">
     <div id="gitButtons">
@@ -236,16 +49,16 @@ table{
                 <h1 id="projectName"><img src="./img/Icon-36x36.png" /><span>Fort</span></h1>
                 <ul>
                     <li>
-                        <a id="about" href="#about">About</a>
+                        <a id="about" href="./index.html">About</a>
                     </li>
                     <li>
-                        <a id="components" href="#components">Components</a>
+                        <a id="components" href="./components.html">Components</a>
                         <ul>
                             <li>
-                                <a href="#components-popup">Popup</a>
+                                <a href="./components.html#components-popup">Popup</a>
                             </li>
                             <li>
-                                <a href="#components-navigator">Navigator</a>
+                                <a href="./components.html#components-navigator">Navigator</a>
                             </li>
                         </ul>
                     </li>
@@ -255,37 +68,82 @@ table{
                 </ul>
             </div>
             <div class="row-fluid">
-                <div id="content" class="span12"></div>
+                <div id="content" class="span12">
+                    <!-- Template Start -->
+                    <div class="page-header">
+                        <h2>About</h2>
+                    </div>
+                    <div class="row-fluid">
+                        <span class="span5">
+                            <p class="about"><b>Fort</b> is a growing library of Fundamental Open-source Responsive Tools. The
+                                components were designed with mobile browsing in mind and should work on Android 2.3+, iOS4+,
+                                and many others.</p>
+                        </span>
+                        <span class="span7">
+                            <div class="hero-unit">
+                                <h3>Download</h3>
+                                <p>Click on the links below to go to the Fort github repository or download it as a zip.</p>
+                                <p>
+                                    <a href="https://github.com/FoundOPS/fort" class="btn btn-primary">Github</a>
+                                    <a href="https://github.com/FoundOPS/fort/zipball/master" class="btn btn-primary">.zip</a>
+                                </p>
+                            </div>
+                        </span>
+                    </div>
+                    <hr>
+                    <div class="well">
+                        <h3>Popup Examples</h3>
+                        <p><a id="button1">Popups</a> will work on any element with the id passed to either the jQuery plugin or the javascript object constructor.</p>
+                        <p><button id="button2" class="btn">Show Popup!</button></p>
+                    </div>
+
+                    <script src="./lib/jquery.jScrollPane.js"></script>
+                    <script src="./lib/jquery.mousewheel.js"></script>
+                    <script>
+                        //TODO: Move out as popup-ex1.js
+                        $("#button1").popup({
+                            id:"button1",
+                            title:"Hello World!",
+                            contents: [
+                                {"name": "Menu Item 1", url: "m1"},
+                                {"name": "Menu Item 2", id: "m2"},
+                                {"name": "Link to second button's menu...", id: "button2"}
+                            ]
+                        });
+
+                        //TODO: Fix popup so that misspelled object attr's throw errors.
+                        $("#button2").popup({
+                            id: "button2",
+                            title: "Hello Again, World!",
+                            contents: [
+                                {"name": "Another Menu Item 1", url: "am1"},
+                                {"name": "Another Menu Item 2", url: "am2"},
+                                {"name": "Link to first button's menu...", id: "button1"}
+                            ]
+                        });
+
+                        $(document).on("popup.created", function () {
+                            $("#popupContentWrapper").jScrollPane({
+                                horizontalGutter: 0,
+                                verticalGutter: 0,
+                                'showArrows': false
+                            });
+                        });
+
+                        $(document).on('popup.setContent popup.visible popup.resize', function (e) {
+                            $("#popupContentWrapper").data('jsp').reinitialise();
+                        });
+                    </script>
+                    <!-- Template End -->
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="./lib/bootstrap.min.js"></script>
-    <!--script src="./lib/bootstrap-transition.js"></script>
-    <script src="./lib/bootstrap-modal.js"></script>
-    <script src="./lib/bootstrap-dropdown.js"></script>
-    <script src="./lib/bootstrap-tab.js"></script>
-    <script src="./lib/bootstrap-tooltip.js"></script>
-    <script src="./lib/bootstrap-popover.js"></script>
-    <script src="./lib/bootstrap-button.js"></script>
-    <script src="./lib/bootstrap-collapse.js"></script-->
     <script type="text/javascript" src="./lib/prettify.js"></script>
     <script type="text/javascript" src="./lib/less.min.js"></script>
     <script type="text/javascript" src="./js/popup.js"></script>
-    <script>
-        $("#navigation>ul>li>a").click(function(){
-            var navUrl = $(this).attr('href');
-            //console.log(navUrl.substr(navUrl.indexOf('#')+1));
-            $("#content").load("./"+navUrl.substr(navUrl.indexOf('#')+1)+".html", function(){prettyPrint();});
-			$("body").scrollTop(0);
-			return false;
-        });
-
-        $(document).ready(function(){
-            $("#about").trigger("click");
-        });
-    </script>
 </body>
 </html>
