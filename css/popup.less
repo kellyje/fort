@@ -91,7 +91,14 @@ html{
     height: @popupCarrotHeight;
     width: @popupCarrotWidth;
 
-    background: url('../img/popupArrow.png') no-repeat;
+    background-image: url('../img/popupArrow.png');
+	background-repeat: no-repeat;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+	#popupArrow {
+		background-image: url('../img/popupArrow_2x.png');
+	}
 }
 
 .hover(){
@@ -111,12 +118,34 @@ html{
 
 #popupBack {
     left: 0;
-    background: url('../img/popupBack.png') center center no-repeat;
+    background-image: url('../img/popupBack.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+	#popupBack {
+		background-image: url('../img/popupBack_2x.png');
+		/* TODO: background-size is only supported in CSS3. 
+				 better solution required. */
+		background-size: 8px 15px;
+	}
 }
 
 #popupClose {
     right: 0;
-    background: url('../img/popupClose.png') center center no-repeat;
+    background-image: url('../img/popupClose.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+	#popupClose {
+		background-image: url('../img/popupClose_2x.png');
+		/* TODO: background-size is only supported in CSS3. 
+				 better solution required. */
+		background-size: 15px 15px;
+	}
 }
 
 #popupTitle{
