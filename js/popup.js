@@ -1,5 +1,4 @@
-define(["jquery", "jmousewheel", "jscrollpane"], function ($) {
-    (function ($) {
+(function ($) {
         var popup = null;
         var methods = {
             init: function(options) {
@@ -512,6 +511,3 @@ define(["jquery", "jmousewheel", "jscrollpane"], function ($) {
             this.setContent(c);
         };
     }
-
-    return Popup;
-});
