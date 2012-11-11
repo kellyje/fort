@@ -42,6 +42,10 @@ html{
     top: 0;
     left: 0;
     .borderBox;
+    z-index: 10;
+    //pointer-events allows click-throughs to popup. Possibly find better fix in the future.
+    pointer-events: none;
+    -webkit-transform: translateZ(0);
 }
 
 #popup {
@@ -49,9 +53,10 @@ html{
     .borderBox;
     height: 100%;
     width: 100%;
-    z-index: 3;
     color: @charcoal;
-    visibility: visible;
+    visibility: visible !important;
+    z-index: 10;
+    -webkit-transform: translateZ(0);
 
     a {
         color: @charcoal;
@@ -60,23 +65,24 @@ html{
 
 #popupHeader {
     position: absolute;
+    z-index:1;
     .borderBox;
     width: 100%;
     overflow: hidden;
-    z-index: 3;
     border-bottom: 1px solid @charcoal;
     line-height: @popupHeaderHeight;
     font-size: 16/18em;
     background: @lighterGrey;
     border-bottom: 2px solid @darkGrey;
     visibility: visible;
-//box-shadow: 0px 0px 5px #888;
+//box-shadow: 0 0 5px #888;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     border-top: 2px solid @darkGrey;
     border-right: 2px solid @darkGrey;
     border-left: 2px solid @darkGrey;
     height: 49px;
+    pointer-events: auto;
 }
 
 #popupArrow {
@@ -86,7 +92,7 @@ html{
     margin-left: -1 * (@popupCarrotWidth / 2)-2; /* Half width */
     visibility: visible;
     left: 50%;
-    z-index: 5;
+    z-index: 2;
 
     height: @popupCarrotHeight;
     width: @popupCarrotWidth;
@@ -137,6 +143,7 @@ html{
     height: 100%;
     width: 100%;
     .borderBox;
+    pointer-events: auto;
 }
 
 #popupContent {
@@ -150,7 +157,7 @@ html{
     text-align: left;
     font-size: 1em;
     background: @lighterGrey;
-    color: @charcoal;
+    //color: @charcoal;
 
     border-right: 2px solid @darkGrey;
     border-bottom: 2px solid @darkGrey;
@@ -192,7 +199,7 @@ html{
     width: 100% !important;
     border-radius: 8px;
     background: @lighterGrey;
-    box-shadow: 0px 0px 10px @lightCharcoal;
+    box-shadow: 0 0 10px @lightCharcoal;
 }
 
 #popupContentWrapper .jspContainer {
