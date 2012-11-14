@@ -1,0 +1,681 @@
+@import "jquery.jscrollpane.less";
+@import "popup.less";
+
+/* navigator css stylesheet */
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*******************************************************
+***                   END RESET                      ***
+*******************************************************/
+
+/*NOTES:    The following are linked values:
+                  #nav height = .navElement height
+                  (#nav height + #nav padding-top/bottom) = #sideBar top = #content padding-top
+                  #sideBar width = #rightColumn .columnContent padding-right
+                  #sideBar width = (#nav height + #nav padding-top/bottom) ?
+*/
+
+/*  CONSTANTS  */
+
+/*  Colors */
+@lightCharcoal: #777779;
+@lighterGrey: #FAFAFA;
+@lightGrey: #F1F2F2;
+@darkGrey: #CCCCCC;
+@charcoal: #333335;
+@orange: #D9591E;
+@green: #659A41;
+@blue: #488FCD;
+@red: #991A36;
+@black: #000;
+
+@navBorderColor: @lightCharcoal;
+
+/*  Other Vars  */
+@hoverOpacity: .5;
+
+@sideBarWrapperWidth: 55px;
+@sideBarExpandedWidth: 200px;
+
+@imageHeight: 20px;
+@iconPadding: 4px;
+
+@borderRadius: 4px;
+@borderSize: 2px;
+
+/*  Positioning  */
+@navHeight: 45px;
+
+@coverWindowButtonHeight: 40px;
+
+/*  MAIN  */
+html {
+    padding: 0;
+    margin: 0;
+
+    height: 100%;
+}
+
+body {
+    height: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    background: @lightGrey + #050505;
+    color: @charcoal;
+    font-family: segoe, verdana, sans-serif;
+    font-size: 100%;//-webkit-tap-highlight-color: rgba(72,143,205,255);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+}
+
+::selection {
+    text-shadow: none;
+    background: @blue;
+    color: white;
+}
+
+/* For modern browsers */
+.clearFix:before,
+.clearFix:after {
+    content: "";
+    display: table;
+}
+
+.clearFix:after {
+    clear: both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.clearFix {
+    zoom: 1;
+}
+
+a {
+    color: @lightGrey;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover { //color: @darkGrey;
+    }
+}
+
+input:focus {
+    outline: none;
+}
+
+.navColor {
+    background: @charcoal;
+}
+
+#nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: @navHeight;
+    line-height: @navHeight - 4;
+    box-shadow: 0 1px 6px #888;
+    text-align: left;
+
+    img {
+        max-height: 100%;
+        vertical-align: middle;
+    }
+
+    .navColor;
+    background: url("../img/navBg.png") 0 0 repeat-x;
+    /*background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @charcoal), color-stop(1, rgb(85, 85, 86)));*/
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555556', endColorstr='#222224'); /* IE6-9
+    background-image: linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
+    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.31, rgb(34,34,36)),color-stop(1, rgb(85,85,86)));*/
+}
+#navContainer {
+    height: 100%;
+    display: inline-block;
+/* ie 6/7 fix
+*display: inline;
+zoom: 1;*/
+    padding-left: 50px;
+    font-size: 100%; //TODO: Make this dynamic.
+//line-height: @navHeightMax - 4;
+
+    .last {
+        margin-right: 0;
+    }
+}
+.roundedIcon {
+    border: @borderSize solid @navBorderColor;
+    border-radius: 6px;
+}
+
+.navElement {
+    &:focus {
+        outline: white solid thin;
+    }
+    box-shadow: inset 0 0 5px #777779;
+    .roundedIcon;
+    background: white;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 60px; /*Spacing between nav elements*/
+    line-height: normal;
+
+    a {
+        //Allows links to take up 100% of clickable space.
+        display: inline-block;
+    }
+
+    .navIcon {
+        height: 28px;
+        //padding: @iconPadding;
+    }
+
+    input {
+        border: 0;
+        line-height: 100%;
+        height: @imageHeight + @iconPadding*2 - 2;
+        font-size: 12px; /*TODO: Change to relative font size (.75em)*/
+        color: @charcoal;
+        margin: 0 0 0 2px;
+        padding-left: 4px;
+        background: transparent;
+    }
+
+    img {
+        height: @imageHeight;
+        vertical-align: middle;
+    }
+
+    &:hover {
+    }
+}
+
+#navClient {
+    padding: 0;
+    background-color: @charcoal;
+    .navIcon {
+        padding: 0;
+        border-right: @borderSize solid @navBorderColor;
+        border-radius: @borderRadius;
+        overflow: hidden;
+    }
+}
+
+#navSearch {
+    a {
+        //float: right;
+    }
+    .navIcon { //border-left: @borderSize solid @navBorderColor;
+    }
+
+    img{
+        padding: 4px;
+    }
+}
+
+#clientLogo {
+    background: @lightGrey;
+    //margin: 0 4px;
+    height: @imageHeight + 8px;
+    border-top-right-radius: @borderRadius;
+    border-bottom-right-radius: @borderRadius;
+}
+
+#logo {
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    bottom: 2px;
+    margin: auto;
+}
+
+#showMenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 10px;
+    border-left: 2px solid;
+    height: 100%;
+}
+
+#sideBarWrapper {
+    position: fixed;
+    top: @navHeight;
+    bottom: 0;
+    right: 0;
+    overflow-x: hidden;
+    width: @sideBarWrapperWidth;
+    z-index: 2;
+    .navColor;
+/*TODO: Give box shadows vendor prefixes.*/
+    box-shadow: -1px 4px 6px #888;
+    color: @lightGrey;
+
+    background: url("../img/sideBarBg.png") repeat;
+}
+
+#sideBarWrapper .jspDrag {
+    background: #fff;
+}
+
+#sideBarWrapper .jspCapBottom{
+    height: @coverWindowButtonHeight;
+}
+
+#sideBarInnerWrapper{
+    .borderBox;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    //border-right: @borderSize solid @darkGrey;
+    z-index: 1;
+}
+
+#sideBar {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    overflow-y: auto;
+    width: @sideBarWrapperWidth;
+    max-height: 100%;
+    right: 0;
+
+    padding: 0 0 40px 0;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    line-height: 1;
+
+    .navColor;
+    background: url("../img/sideBarBg.png") repeat;
+}
+
+.sideBarElement {
+    display: block;
+    position: relative;
+    margin: 0 5px;
+    font-weight: bold;
+
+    span {
+        vertical-align: middle;
+    }
+
+    img {
+        display: inline;
+        max-width: 100%;
+        min-width: 20px;
+        position: relative;
+
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+        padding: 5px 10px;
+        text-decoration: none;
+        border: 0;
+    }
+
+//TODO: Eliminate most of this.
+    .icon {
+        width: 25px;
+        height: 25px;
+        display: inline-block;
+        padding: 6px 10px;
+        margin-right: 5px;
+    }
+}
+
+#coverWindowButton {
+    position: absolute;
+    .borderBox;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 200px;
+    height: @coverWindowButtonHeight;
+    border-top: 1px solid @darkGrey;
+    background: @charcoal;
+    z-index: 1;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+#contentWrapper {
+    overflow: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden; //display: none;
+    height: 100%;
+    width: 100%;
+}
+
+#content {
+    .borderBox;
+    overflow: visible;
+    visibility: visible;
+    position: relative;
+    padding-top: @navHeight;
+    padding-right: @sideBarWrapperWidth;
+}
+
+#remoteContent{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#updates{
+    padding: 15px;
+}
+
+#expandMenuButton {
+    display: inline-block;
+    width: 100%;
+}
+
+#slideMenu {
+    border-top: 1px solid @darkGrey;
+    border-bottom: 1px solid @darkGrey;
+    .sideBarElement;
+}
+
+#slideMenu:hover {
+    opacity: @hoverOpacity;
+}
+
+.iconExpand:hover {
+    opacity: @hoverOpacity;
+}
+
+.borderBox {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*#popupContent, #popupContent .jspContainer, #popupContent .jspPane{
+    max-height: 100%;
+    width: 100%;
+}*/
+
+.androidFixedPositionFix {
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out;
+    -ms-transition: -ms-transform .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    zoom: 1;
+    .rotate(0deg);
+}
+
+.iconExpand, .iconShow { //TODO: Fix problem w/ android 2.3 browser. http://jsfiddle.net/KrRsy/5/
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out;
+    -ms-transition: -ms-transform .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    zoom: 1;
+}
+
+//Mixin to rotate elements.
+.rotate(@deg){
+    -webkit-transform: rotate(@deg);
+    -ms-transform: rotate(@deg); /* IE 9 */
+    -o-transform: rotate(@deg); /* Opera */
+    -moz-transform: rotate(@deg); /* Firefox */
+    transform: rotate(@deg);
+}
+
+.rotateIcon {
+    .rotate(-90deg);
+}
+
+.flip {
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg); /* IE 9 */
+    -o-transform: rotate(-180deg); /* Opera */
+    -moz-transform: rotate(-180deg); /* Firefox */
+    transform: rotate(-180deg);
+}
+
+.createColors(@color){
+    (~".@{color}") {
+        color: @@color;
+        outline: 0 none; //text-shadow: 0 2px 20px @@color, 0 2px 30px @@color+#222;
+    //text-shadow: 0 0 1px @lightGrey;
+    }
+}
+
+.createColors('lightGrey')
+
+;
+.createColors('darkGrey')
+
+;
+.createColors('red')
+
+;
+.createColors('orange')
+
+;
+.createColors('green')
+
+;
+.createColors('blue')
+
+;
+.createColors('lightCharcoal')
+
+;
+.createColors('charcoal')
+
+;
+.createColors('black')
+
+;
+
+@media only screen and (max-width:800px) {
+    #nav {
+        position: absolute;
+        height: @navHeight;
+    }
+
+    #navContainer {
+        line-height: @navHeight - 5px;
+    }
+
+    #logo {
+        display: none;
+    }
+
+    #navClient {
+        .navIcon {
+            border: 0;
+            padding: 0;
+        }
+    }
+
+    #clientLogo {
+        display: none;
+
+        //TODO: Find out what the height declaration was for.
+        height: 100%;
+        width: 0;
+        margin-left: 0;
+        padding: 0;
+    }
+
+    #navSearch input {
+        display: none;
+    }
+
+    #navSearch {
+        display: none;
+    }
+
+    #showMenu {
+        display: inline;
+    }
+
+    #sideBar {
+        right: 0;
+        height: auto;
+        width: @sideBarExpandedWidth;
+
+        box-shadow: 0 0 10px #888;
+        padding: 0;
+        /*background: @lightGrey;
+        color: @charcoal;*/
+
+        -webkit-border-bottom-right-radius: 6px;
+        -webkit-border-bottom-left-radius: 6px;
+        -moz-border-bottom-right-radius: 6px;
+        -moz-border-bottom-left-radius: 6px;
+        -ms-border-bottom-right-radius: 6px;
+        -ms-border-bottom-left-radius: 6px;
+        -o-border-bottom-right-radius: 6px;
+        -o-border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+
+    #sideBarWrapper {
+        position: absolute;
+        display: inline-block;
+        top: @navHeight;
+        height: auto;
+        background: transparent;
+        width: @sideBarExpandedWidth;
+        box-shadow: none;
+        visibility: hidden;
+        //Allows jScrollPane to respect box shadow outside of wrapper
+        //overflow: visible !important;
+    }
+
+    #sideBarInnerWrapper{
+        width: @sideBarExpandedWidth;
+        //Allows jScrollPane to respect box shadow outside of wrapper
+        //overflow: visible !important;
+    }
+
+    #sideBarWrapper .jspContainer{
+        //Allows jScrollPane to respect box shadow outside of wrapper
+        //overflow: visible !important;
+    }
+
+    #slideMenu {
+        display: none;
+    }
+
+    #content {
+        padding-right: 0;
+
+        //BUG FIX: Fix for kinetic scrollbars on mobile only.
+        height: 100%;
+    }
+
+    #coverWindowButton{
+        display: none;
+    }
+
+    #sideBarWrapper .jspCapBottom{
+        height: 0;
+        display: none;
+     }
+}
+
+@media only screen and (max-width:390px) {
+    #logo {
+        display: none;
+    }
+
+    #showMenu {
+        display: inline;
+    }
+
+    #navContainer { //width: 100%;
+    }
+
+    .navElement {
+        margin-right: 10%;
+    }
+
+    #nav .last {
+        margin-right: 0;
+    }
+
+    #content {
+        //background: @green;
+    }
+}
+
+//--------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
+//                               Silverlight View                                                                      //
+//--------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------//
+#silverlightControlHost {
+    left: 0;
+    top: @navHeight;
+    //for internet explorer/firefox, to hide scroll. it will be within bounds
+    overflow: hidden;
+}
