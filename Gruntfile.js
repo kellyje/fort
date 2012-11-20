@@ -183,5 +183,4 @@ module.exports = function(grunt) {
   // Alias the `compass` task to run the `recess` task instead
   grunt.registerTask('compass', 'recess');
 
-
 };
