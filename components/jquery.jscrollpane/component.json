@@ -1,0 +1,21 @@
+{
+  "name": "jquery.jscrollpane",
+  "version": "0.0.0",
+  "main": [
+    "./jquery.jscrollpane.js",
+    "./jquery.jscrollpane.css"
+  ],
+  "dependencies": {
+    "jquery": "~1.8.0",
+    "jquery-ui": ">1.8.0"
+  },
+  "readme": "jscrollpane\n===========\n\nProxy Repo for jScrollPane in Bower\n\nFor more information about jScrollPane: https://github.com/vitch/jScrollPane\n",
+  "readmeFilename": "README.md",
+  "_id": "jquery.jscrollpane@2.0.0beta12",
+  "description": "jscrollpane ===========",
+  "commit": "1e120a92ef98058616eca0a5c4de16080036fcf4",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/blittle/jscrollpane.git"
+  }
+}

@@ -2,6 +2,7 @@
 
 // It does not try to register in a CommonJS environment since
 // jQuery is not likely to run in those environments.
+
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
@@ -11,7 +12,7 @@
         factory(jQuery, doT);
     }
 }(function ($, doT) {
-    //define(["jquery", "ui/popup", "lib/doT.min", "jmousewheel", "jscrollpane"], function ($, Popup, doT) {
+    //TODO check $, doT, popup, jmousewheel, and jscrollpane are here: otherwise log error
 
     var navigator = null;
     var methods = {
