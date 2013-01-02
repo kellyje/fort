@@ -2,6 +2,7 @@
 @lightCharcoal: #777779;
 @lighterGrey: #FAFAFA;
 @lightGrey: #F1F2F2;
+@grey: #EEEEEE;
 @darkGrey: #CCCCCC;
 @charcoal: #333335;
 @orange: #D9591E;
@@ -57,6 +58,7 @@ html{
     visibility: visible !important;
     z-index: 10;
     -webkit-transform: translateZ(0);
+    border-top: 2px solid @darkGrey;
 
     a {
         color: @charcoal;
@@ -75,10 +77,6 @@ html{
     background: @lighterGrey;
     border-bottom: 2px solid @darkGrey;
     visibility: visible;
-//box-shadow: 0 0 5px #888;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top: 2px solid @darkGrey;
     border-right: 2px solid @darkGrey;
     border-left: 2px solid @darkGrey;
     height: 49px;
@@ -88,7 +86,7 @@ html{
 #popupArrow {
     position: absolute;
     float: left;
-    margin-top: -1* @popupCarrotHeight + 2;
+    margin-top: -1* @popupCarrotHeight;
     margin-left: -1 * (@popupCarrotWidth / 2)-2; /* Half width */
     visibility: visible;
     left: 50%;
@@ -97,7 +95,13 @@ html{
     height: @popupCarrotHeight;
     width: @popupCarrotWidth;
 
-    background: url('../img/popupArrow.png') no-repeat;
+    background: url('images/popupArrowTop.png') no-repeat;
+}
+
+.flipArrow{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
 }
 
 .hover(){
@@ -117,12 +121,12 @@ html{
 
 #popupBack {
     left: 0;
-    background: url('../img/popupBack.png') center center no-repeat;
+    background: url('images/popupBack.png') center center no-repeat;
 }
 
 #popupClose {
     right: 0;
-    background: url('../img/popupClose.png') center center no-repeat;
+    background: url('images/popupClose.png') center center no-repeat;
 }
 
 #popupTitle{
@@ -139,7 +143,7 @@ html{
 #popupContentWrapper {
     position: relative;
     overflow: visible !important;
-    padding-top: 49px;
+    padding-top: 0px;
     height: 100%;
     width: 100%;
     .borderBox;
@@ -151,19 +155,17 @@ html{
     position: relative;
     overflow: auto;
 
+    min-height: 65px;
     max-height: 100%;
     width: 100%;
 
     text-align: left;
     font-size: 1em;
     background: @lighterGrey;
-    //color: @charcoal;
 
     border-right: 2px solid @darkGrey;
-    border-bottom: 2px solid @darkGrey;
     border-left: 2px solid @darkGrey;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-bottom: 2px solid @darkGrey;
     .borderBox;
 
     .last {
@@ -177,6 +179,10 @@ html{
     cursor: pointer;
     padding: 12px 23px;
     border-bottom: 1px solid @darkGrey;
+}
+
+.popupContentRow:hover{
+    background: @grey;
 }
 
 @media only screen and (max-width:800px) {
@@ -197,8 +203,8 @@ html{
 // ========================================================================
 #popupContentWrapper .jspPane{
     width: 100% !important;
-    border-radius: 8px;
-    background: @lighterGrey;
+    //border-radius: 8px;
+    -webkit-box-shadow: 0 0 10px @lightCharcoal;
     box-shadow: 0 0 10px @lightCharcoal;
 }
 
@@ -212,5 +218,9 @@ html{
 
 #popupContentWrapper .jspCapTop {
     display: block;
-    height: @popupHeaderHeight;
+    height: @popupHeaderHeight+4;
+}
+#popupContentWrapper .jspCapBottom {
+    display: block;
+    height: 2px;
 }
