@@ -112,9 +112,9 @@
     }
 
     Popup.prototype.updatePositions = function(target){
-        this.updateLeftPosition(target);
         var top = this.getTop(target);
         $("#popupWrapper").css("padding-top", top + "px");
+        this.updateLeftPosition(target);
     };
 
     Popup.prototype.disableHeader = function() {
@@ -231,8 +231,8 @@
 
     Popup.prototype.getTop = function(target){
         var caretHeight =  $("#popupArrow").height();
-        var targetTop = target.offset().top;
-        var targetBottom = targetTop + target.outerHeight() - $(window).scrollTop();
+        var targetTop = target.offset().top - $(window).scrollTop();
+        var targetBottom = targetTop + target.outerHeight();
         var popupTop = targetBottom + caretHeight;
         var windowHeight = $(window).height();
         var popupContentHeight = $("#popupContent").height();
@@ -290,6 +290,7 @@
     };
 
     Popup.prototype.setCaretPosition = function(offset){
+        //console.log("LOG: Setting caret position.");
         var caretPos = "50%";
         var caret = $("#popupArrow");
         if (Popup.offScreenX) {
@@ -298,8 +299,9 @@
         //Moves carrot on popup div.
         caret.css("left", caretPos);
 
+        //console.log("LOG: Popup.above: "+Popup.above);
         if(Popup.above){
-            var popupHeight = $("#popupHeader").outerHeight() + $("#popupContent").outerHeight() - 2;
+            var popupHeight = $("#popupContent").outerHeight() - 2;
             $("#popupArrow").css("margin-top", popupHeight+"px");
             $("#popupArrow").addClass("flipArrow");
         }else{
@@ -654,12 +656,12 @@
         this.setTitle(data.title);
         this.setContent(c);
 
-        if(Popup.above){
+        /*if(Popup.above){
             var newPopupHeight = $("#popupArrow").height() + $("#popupContent").height() + $("#popupHeader").height();
             var popupTop = oldPopupTop - (newPopupHeight - oldPopupHeight);
             //console.log("New top: "+popupTop);
             $("#popupWrapper").css("padding-top", popupTop + "px");
             this.setCaretPosition(Popup.caretLeftOffset);
-        }
+        }*/
     };
 }(window.jQuery);

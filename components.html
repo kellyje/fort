@@ -114,8 +114,45 @@
                 </p>
 
                 <h3>Example</h3>
-                <p><button id="menu1" class="showPopup btn">Show Popup!</button>
-                    <a id="menu2" class="showPopup btn">Show Another Popup!</a></p>
+                <p><a id="button1" class="btn">Show Popup!</a>
+                <a id="button2" class="btn">Show Another Popup!</a></p>
+                <script>
+                    $(document).ready(function(){
+                        //TODO: Move out as popup-ex1.js
+                        $("#button1").optionsPopup({
+                            id: "button1",
+                            title: "Hello World!",
+                            contents: [
+                                {"name": "About", url: "./index.html"},
+                                {"name": "Components", url: "./components.html"},
+                                {"name": "Link to second button's menu...", id: "button2"}
+                            ]
+                        });
+                        //TODO: Fix popup so that misspelled object attr's throw errors.
+                        $("#button2").optionsPopup({
+                                    id:"button2",
+                                    title: "Hello Again, World!",
+                                    contents: [
+                                        {"name": "Facebook", url: "http://www.facebook.com"},
+                                        {"name": "Google", url: "http://www.google.com"},
+                                        {"name": "Link to first button's menu...", id: "button1"}
+                                    ]
+                                }
+                        );
+
+                        $(document).on("popup.created", function () {
+                            $("#popupContentWrapper").jScrollPane({
+                                horizontalGutter: 0,
+                                verticalGutter: 0,
+                                'showArrows': false
+                            });
+                        });
+
+                        $(document).on('popup.setContent popup.visible popup.resize', function (e) {
+                            $("#popupContentWrapper").data('jsp').reinitialise();
+                        });
+                    });
+                </script>
                 <h4>Html</h4>
                     <pre class="prettyprint lang-html">
     &lt;button id="menu1"&gt;Show Popup!&lt;/button&gt;
@@ -141,42 +178,6 @@
             ]
         }
     );</pre>
-                <script>
-                    $(document).ready(function(){
-                        $("#menu1").optionsPopup({
-                            id: "menu1",
-                            title: "Hello World!",
-                            contents: [
-                                {"name": "About", url: "./index.html"},
-                                {"name": "Components", url: "./components.html"},
-                                {"name": "Link to second button's menu...", id: "menu2"}
-                            ]
-                        });
-                        $("#menu2").optionsPopup({
-                                    id:"menu2",
-                                    title: "Hello Again, World!",
-                                    contents: [
-                                        {"name": "Facebook", url: "http://www.facebook.com"},
-                                        {"name": "Google", url: "http://www.google.com"},
-                                        {"name": "Link to first button's menu...", id: "menu1"}
-                                    ]
-                                }
-                        );
-
-                        $(document).on("popup.created", function () {
-                            $("#popupContentWrapper").jScrollPane({
-                                horizontalGutter: 0,
-                                verticalGutter: 0,
-                                'showArrows': false
-                            });
-                        });
-
-                        $(document).on('popup.setContent popup.visible popup.resize', function (e) {
-                            $("#popupContentWrapper").data('jsp').reinitialise();
-                        });
-                    });
-                </script>
-
                 <h3>Events</h3>
                 <p>The following are jQuery custom events fired at different times within the popup:</p>
                 <p><table class="table table-bordered table-striped">
