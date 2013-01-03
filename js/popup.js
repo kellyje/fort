@@ -231,7 +231,11 @@
 
     Popup.prototype.getTop = function(target){
         var caretHeight =  $("#popupArrow").height();
-        var targetTop = target.offset().top - $(window).scrollTop();
+        //TODO: Make more readable.
+        //If absolute position from mobile css, don't offset from scroll.
+        var scrollTop = ($("#popupWrapper").css("position")==="absolute")?0:$(window).scrollTop();
+        //console.log("scrollTop: "+scrollTop);
+        var targetTop = target.offset().top - scrollTop;
         var targetBottom = targetTop + target.outerHeight();
         var popupTop = targetBottom + caretHeight;
         var windowHeight = $(window).height();
