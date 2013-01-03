@@ -510,6 +510,7 @@
         this.setAction(data.id);
         this.setTitle(data.title);
         this.setContent(data.contents);
+        //this.updatePositions(Popup.currentTarget);
     };
 
     //Public setter function for private var content and sets content of the html popup element.
