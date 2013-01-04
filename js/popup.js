@@ -3,10 +3,8 @@
 //          jQuery Plugin Block
 ////////////////////////////////////////////////////////////
 (function ($) {
-        var popup = null;
-        //this.p = Popup;
         var methods = {
-            init: function(options) {
+            init: function(options, popup) {
                 if(typeof(options.backgroundColor) !== 'undefined'){
                     Popup.setBackgroundColor(options.backgroundColor);
                 }
@@ -20,23 +18,29 @@
                 }
 
                 if(typeof(options.disableHeader) !== 'undefined'){
-                if(options.disableHeader)popup.disableHeader();
+                    if(options.disableHeader === true){
+                        popup.disableHeader();
+                    }else if(options.disableHeader === false){
+                        popup.enableHeader();
+                    }
                 }
 
                 popup.addMenu(options.id, options.title, options.contents);
             },
-            popupInit: function(options) {
+            popupInit: function(options, popup) {
                 popup = new Popup(this.selector);
-                methods.init(options);
+                methods.init(options, popup);
+                return popup;
             },
-            optionsPopupInit: function (options) {
+            optionsPopupInit: function (options, popup) {
                 popup = new OptionsPopup(this.selector);
 
-                if(typeof(options.disableBackButton) !== 'undefined'){
+                if(typeof(options.disableBackButton) !== 'undefined' && options.disableBackButton === true){
                     popup.disableBackButton();
                 }
 
-                methods.init(options);
+                methods.init(options, popup);
+                return popup;
             },
             lockPopup: function() {
                 Popup.lockPopup();
@@ -44,14 +48,14 @@
             unlockPopup: function() {
                 Popup.unlockPopup();
             },
-            disableHeader: function() {
+            disableHeader: function(popup) {
                 popup.disableHeader();
             },
-            addMenu: function (menu) {
+            addMenu: function (menu, popup) {
                 if (popup === null)return;
                 popup.addMenu(menu.id, menu.title, menu.contents);
             },
-            closePopup: function () {
+            closePopup: function (popup) {
                 popup.closePopup();
             },
             test: function() {
@@ -465,8 +469,14 @@ Popup.prototype.populate = function (identifierList) {
     Popup.history.push(newMenu);
 
     this.clearData();
-    if(!this.isHeaderDisabled)
+    console.log("isHeaderDisabled: "+this.isHeaderDisabled);
+    console.log("popupNumber: "+ this.popupNumber);
+    console.log("popupListenerID: "+ this.popupListenerID);
+    if(!this.isHeaderDisabled) {
         this.insertHeader();
+    }else{
+        this.removeHeader();
+    }
     this.setData(newMenu);
     return true;
 };
@@ -506,7 +516,7 @@ Popup.prototype.removeHeader = function() {
     $("#popupBack").off("click");
     $("#popupClose").off("click");
     $("#popupHeader").remove();
-    $("#popupContentWrapper").css("paddingTop", "");
+    $("#popupContent").css("paddingTop", "");
 };
 
 Popup.prototype.clearData = function (){
@@ -599,7 +609,7 @@ OptionsPopup.hasRun = false;
 /**     PROTOTYPE FUNCTIONS     **/
 //Run-once function for listeners
 OptionsPopup.prototype.init = function(){
-    var thisOptionsPopup = this;
+
     $(document)
         .on('touchstart mousedown', '#popup a',
         function () {
@@ -611,6 +621,12 @@ OptionsPopup.prototype.init = function(){
         })
         .on('click', '.popupContentRow',
         function () {
+            console.log("-----------------------------------------------------------");
+            console.log("CLICK");
+            console.log("isHeaderDisabled: "+Popup.lastPopupClicked.isHeaderDisabled);
+            console.log("popupNumber: "+ Popup.lastPopupClicked.popupNumber);
+            console.log("popupListenerID: "+ Popup.lastPopupClicked.popupListenerID);
+            console.log("-----------------------------------------------------------");
             var newId = [];
             newId.push($(this).attr('id'));
 
@@ -618,8 +634,8 @@ OptionsPopup.prototype.init = function(){
                 $(this).trigger("popup.action", $(this));
             }
 
-            var keepOpen = thisOptionsPopup.populate(newId);
-            if (!keepOpen) thisOptionsPopup.closePopup();
+            var keepOpen = Popup.lastPopupClicked.populate(newId);
+            if (!keepOpen) Popup.lastPopupClicked.closePopup();
         })
 };
 
