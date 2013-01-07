@@ -2,20 +2,26 @@
 @lightCharcoal: #777779;
 @lighterGrey: #FAFAFA;
 @lightGrey: #F1F2F2;
-@grey: #EEEEEE;
 @darkGrey: #CCCCCC;
+@grey: #E6E6E6;
+
 @charcoal: #333335;
 @orange: #D9591E;
-@green: #659A41;
+@black: #000000;
+@white: #ffffff;
+@green: #5aad52;
 @blue: #488FCD;
-@red: #991A36;
-@black: #000;
+@red: #d06268;
 
 @popupHeaderHeight: 45px;
 @popupCarrotHeight: 14px;
 @popupCarrotWidth: 28px;
 
 @hoverOpacity: .5;
+
+.hoverColor (@color: @white, @strength: 10%){
+    background-color: darken(@color, @strength);
+}
 
 html{
     font-size: 100%;
@@ -181,7 +187,7 @@ html{
 }
 
 .popupContentRow:hover{
-    background: @grey;
+    background: @darkGrey;
 }
 
 @media only screen and (max-width:800px) {
@@ -229,5 +235,9 @@ html{
 }
 
 #popupWrapper .jspPane{
+    pointer-events: auto;
+}
+
+#popupWrapper .jspVerticalBar{
     pointer-events: auto;
 }

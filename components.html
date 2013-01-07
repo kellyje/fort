@@ -148,7 +148,7 @@
                             });
                         });
 
-                        $(document).on('popup.setContent popup.visible popup.resize', function (e) {
+                        $(document).on('popup.setContent popup.updatePositions popup.visible popup.resize', function (e) {
                             $("#popupContentWrapper").data('jsp').reinitialise();
                         });
                     });

@@ -105,6 +105,7 @@ function Popup(popupListener) {
     //Class added to detect clicks on primary buttons triggering popups.
     this.popupListenerID = "popupListener"+this.popupNumber;
     this.isHeaderDisabled = true;
+    this.popupHeight = 0;
 
     var thisPopup = this;
     var listenerElements = $(popupListener);
@@ -112,13 +113,14 @@ function Popup(popupListener) {
     listenerElements.css("cursor", "pointer");
     listenerElements.click(function (e) {
         thisPopup.toggleVisible(e, $(this));
+        $(document).trigger("popup.listenerClicked");
     });
 }
 
 Popup.prototype.updatePositions = function(target){
-    var top = this.getTop(target);
-    $("#popupWrapper").css("padding-top", top + "px");
+    this.updateTopPosition(target);
     this.updateLeftPosition(target);
+    $(document).trigger("popup.updatePositions");
 };
 
 Popup.prototype.disableHeader = function() {
@@ -246,6 +248,8 @@ Popup.prototype.getTop = function(target){
     var popupContentHeight = $("#popupContent").height();
     var popupHeight = popupContentHeight + $("#popupHeader").outerHeight() + caretHeight;
 
+    this.popupHeight = popupHeight;
+
     Popup.above = false;
     Popup.offScreenY = false;
 
@@ -289,6 +293,11 @@ Popup.prototype.getTop = function(target){
     */
 
     return popupTop;
+};
+
+Popup.prototype.updateTopPosition = function(target){
+    var top = this.getTop(target);
+    $("#popupWrapper").css("padding-top", top + "px");
 };
 
 Popup.prototype.updateLeftPosition = function(target){
@@ -415,7 +424,8 @@ Popup.prototype.previousPopup = function(){
         this.closePopup();
         return;
     }
-    this.setData(Popup.history[Popup.history.length - 1]);
+    var menu = Popup.history[Popup.history.length - 1];
+    this.populateByMenu(menu);
 };
 
 //Public setter function for private var title and sets title of the html popup element.
@@ -449,8 +459,34 @@ Popup.prototype.addMenu = function (id, title, contents) {
     Popup.menus.push({'id': id, 'title': title, 'contents': contents});
 };
 
+Popup.prototype.populateByMenu = function(menu){
+    $(document).trigger('popup.populating');
+
+    this.lastContentHeight = this.getPopupContentHeight();
+    this.clearData();
+    if(!this.isHeaderDisabled) {
+        this.insertHeader();
+    }else{
+        this.removeHeader();
+    }
+
+    var popupDisplay = $("#popup").css("display");
+    this.setData(menu);
+    this.currentContentHeight = this.getPopupContentHeight();
+
+    if(Popup.above && popupDisplay!=="none"){
+        var oldPopupTop = parseInt($("#popupWrapper").css("padding-top"), 10);
+        var contentHeightDelta = this.currentContentHeight - this.lastContentHeight;
+        var popupTop = oldPopupTop - (contentHeightDelta);
+        $("#popupWrapper").css("padding-top", popupTop + "px");
+        this.setCaretPosition(Popup.caretLeftOffset);
+    }
+
+    return true;
+};
+
 //Public void function that populates setTitle and setContent with data found by id passed.
-Popup.prototype.populate = function (identifierList) {
+Popup.prototype.populate = function(identifierList){
     var newMenu = null;
     var i=0;
     for(i; i<identifierList.length; i++){
@@ -465,20 +501,17 @@ Popup.prototype.populate = function (identifierList) {
         console.log("ID not found.");
         return false;
     }
-    $(document).trigger('popup.populating');
-    Popup.history.push(newMenu);
 
-    this.clearData();
-    console.log("isHeaderDisabled: "+this.isHeaderDisabled);
-    console.log("popupNumber: "+ this.popupNumber);
-    console.log("popupListenerID: "+ this.popupListenerID);
-    if(!this.isHeaderDisabled) {
-        this.insertHeader();
-    }else{
-        this.removeHeader();
-    }
-    this.setData(newMenu);
-    return true;
+    Popup.history.push(newMenu);
+    return this.populateByMenu(newMenu);
+};
+
+Popup.prototype.getPopupContentHeight = function(){
+    var popupDisplay = $("#popup").css("display");
+    $("#popup").show();
+    var popupHeight = $("#popupContent").height();
+    $("#popup").css("display",popupDisplay);
+    return popupHeight;
 };
 
 Popup.prototype.insertHeader = function (){
@@ -503,13 +536,10 @@ Popup.prototype.insertHeader = function (){
     //Click listener for popup close button.
     $("#popupClose").on("click", function () {
         thisPopup.closePopup();
-        //$("#popupWrapper").css("visibility", "hidden");
     });
 
     $("#popupContent")
         .css("paddingTop", "47px");
-
-    //$("#popup .jspPane").css("padding", "0");
 };
 
 Popup.prototype.removeHeader = function() {
@@ -530,7 +560,6 @@ Popup.prototype.setData = function (data) {
     this.setAction(data.id);
     this.setTitle(data.title);
     this.setContent(data.contents);
-    //this.updatePositions(Popup.currentTarget);
 };
 
 //Public setter function for private var content and sets content of the html popup element.
@@ -609,7 +638,6 @@ OptionsPopup.hasRun = false;
 /**     PROTOTYPE FUNCTIONS     **/
 //Run-once function for listeners
 OptionsPopup.prototype.init = function(){
-
     $(document)
         .on('touchstart mousedown', '#popup a',
         function () {
@@ -621,12 +649,14 @@ OptionsPopup.prototype.init = function(){
         })
         .on('click', '.popupContentRow',
         function () {
+            /*
             console.log("-----------------------------------------------------------");
             console.log("CLICK");
             console.log("isHeaderDisabled: "+Popup.lastPopupClicked.isHeaderDisabled);
             console.log("popupNumber: "+ Popup.lastPopupClicked.popupNumber);
             console.log("popupListenerID: "+ Popup.lastPopupClicked.popupListenerID);
             console.log("-----------------------------------------------------------");
+            */
             var newId = [];
             newId.push($(this).attr('id'));
 
@@ -674,20 +704,7 @@ OptionsPopup.prototype.setData = function (data) {
             "</a>";
     }
 
-    //TODO: Possibly move this into populate and call during back listener.
-    var oldPopupTop = $("#popup").offset().top;
-    //console.log("Old top: "+oldPopupTop);
-    var oldPopupHeight = $("#popupArrow").height() + $("#popupContent").height() + $("#popupHeader").height();
-
     this.setAction(data.id);
     this.setTitle(data.title);
     this.setContent(c);
-
-    /*if(Popup.above){
-        var newPopupHeight = $("#popupArrow").height() + $("#popupContent").height() + $("#popupHeader").height();
-        var popupTop = oldPopupTop - (newPopupHeight - oldPopupHeight);
-        //console.log("New top: "+popupTop);
-        $("#popupWrapper").css("padding-top", popupTop + "px");
-        this.setCaretPosition(Popup.caretLeftOffset);
-    }*/
 };
