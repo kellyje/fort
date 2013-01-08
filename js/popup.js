@@ -105,7 +105,6 @@ function Popup(popupListener) {
     //Class added to detect clicks on primary buttons triggering popups.
     this.popupListenerID = "popupListener"+this.popupNumber;
     this.isHeaderDisabled = true;
-    this.popupHeight = 0;
 
     var thisPopup = this;
     var listenerElements = $(popupListener);
@@ -321,9 +320,11 @@ Popup.prototype.setCaretPosition = function(offset){
         var popupHeight = $("#popupContent").outerHeight() - 2;
         $("#popupArrow").css("margin-top", popupHeight+"px");
         $("#popupArrow").addClass("flipArrow");
+        //$("#popupArrow").css("background", "url('../img/popupArrowBot.png') no-repeat !important;");
     }else{
         $("#popupArrow").css("margin-top", "");
         $("#popupArrow").removeClass("flipArrow");
+        //$("#popupArrow").css("background", "");
     }
     Popup.caretLeftOffset = caretPos;
 };
@@ -565,7 +566,7 @@ Popup.prototype.setData = function (data) {
 //Public setter function for private var content and sets content of the html popup element.
 Popup.prototype.setContent = function (cont) {
     Popup.content = cont;
-    //popupContentDiv.data('jsp').getContentPane().find("#popupContent").html(content);
+    //$("#popupContentWrapper").data('jsp').getContentPane().find("#popupContent").html(cont);
     //Note: Popup content set without using jscrollpane api.
     $("#popupContent").html(cont);
     $("#popupContentWrapper").trigger("popup.setContent", $(this));
