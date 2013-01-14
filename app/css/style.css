@@ -2360,8 +2360,8 @@ select:focus:required:invalid:focus {
 
 .input-append .active,
 .input-prepend .active {
-  background-color: #b5d69e;
-  border-color: #659a41;
+  background-color: #bddeba;
+  border-color: #5aad52;
 }
 
 .input-prepend .add-on,
@@ -8707,205 +8707,6 @@ a.badge:hover {
  * Custom css
  */
 
-/*  Colors */
-
-html {
-  font-size: 100%;
-}
-
-.borderBox {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-#popupWrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 305px;
-  height: 100%;
-  padding-top: 10px;
-  font-family: verdana, sans-serif;
-  pointer-events: none;
-  visibility: hidden;
-  -webkit-transform: translateZ(0);
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-#popup {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  color: #333335;
-  visibility: visible !important;
-  -webkit-transform: translateZ(0);
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-#popup a {
-  color: #333335;
-}
-
-#popupHeader {
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 49px;
-  overflow: hidden;
-  font-size: 0.8888888888888888em;
-  line-height: 45px;
-  pointer-events: auto;
-  background: #fafafa;
-  border-top: 2px solid #cccccc;
-  border-right: 2px solid #cccccc;
-  border-bottom: 1px solid #333335;
-  border-bottom: 2px solid #cccccc;
-  border-left: 2px solid #cccccc;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  visibility: visible;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-#popupArrow {
-  position: absolute;
-  left: 50%;
-  z-index: 2;
-  float: left;
-  width: 28px;
-  height: 14px;
-  margin-top: -12px;
-  margin-left: -16px;
-  background: url('../img/popupArrowTop.png') no-repeat;
-  visibility: visible;
-}
-
-.flipArrow {
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-  -webkit-transform: rotate(180deg);
-     -moz-transform: rotate(180deg);
-}
-
-#popupBack,
-#popupClose {
-  position: absolute;
-  top: 0;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-}
-
-#popupBack:hover,
-#popupClose:hover {
-  opacity: 0.5;
-}
-
-#popupBack:hover,
-#popupClose:hover {
-  opacity: 0.5;
-}
-
-#popupBack {
-  left: 0;
-  background: url('../img/popupBack.png') center center no-repeat;
-}
-
-#popupClose {
-  right: 0;
-  background: url('../img/popupClose.png') center center no-repeat;
-}
-
-#popupTitle {
-  width: 100%;
-  height: 100%;
-  max-width: 225px;
-  margin: 0 auto;
-  overflow: hidden;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-#popupContentWrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding-top: 49px;
-  overflow: visible !important;
-  pointer-events: auto;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-#popupContent {
-  position: relative;
-  width: 100%;
-  max-height: 100%;
-  overflow: auto;
-  font-size: 1em;
-  text-align: left;
-  background: #fafafa;
-  border-right: 2px solid #cccccc;
-  border-bottom: 2px solid #cccccc;
-  border-left: 2px solid #cccccc;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  visibility: visible;
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-#popupContent .last {
-  padding-bottom: 13px;
-  border-bottom: none;
-}
-
-.popupContentRow {
-  display: block;
-  padding: 12px 23px;
-  cursor: pointer;
-  border-bottom: 1px solid #cccccc;
-}
-
-@media only screen and (max-width: 800px) {
-  #popupWrapper {
-    position: absolute;
-  }
-}
-
-@media only screen and (max-width: 390px) {
-  
-}
-
-#popupContentWrapper .jspPane {
-  width: 100% !important;
-  background: #fafafa;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #777779;
-}
-
-#popupContentWrapper .jspDrag {
-  background: #777779;
-}
-
-#popupContentWrapper .jspCapTop {
-  display: block;
-  height: 45px;
-}
-
 /* navigator css stylesheet */
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -9123,7 +8924,7 @@ input:focus {
 }
 
 #nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
@@ -9132,8 +8933,8 @@ input:focus {
   line-height: 41px;
   text-align: left;
   background: #333335;
-  background: url("../img/navBg.png") 0 0 repeat-x;
-  box-shadow: 0 1px 6px #888;
+  -webkit-box-shadow: 0 1px 6px #888;
+          box-shadow: 0 1px 6px #888;
 }
 
 #nav img {
@@ -9145,7 +8946,7 @@ input:focus {
   display: inline-block;
   height: 100%;
   padding-left: 50px;
-  font-size: 100%;
+  font-size: 1em;
 }
 
 #navContainer .last {
@@ -9153,8 +8954,8 @@ input:focus {
 }
 
 .roundedIcon {
-  border: 2px solid #777779;
-  border-radius: 6px;
+  border: 1px solid #777779;
+  border-radius: 0;
 }
 
 .navElement {
@@ -9163,9 +8964,10 @@ input:focus {
   line-height: normal;
   vertical-align: middle;
   background: white;
-  border: 2px solid #777779;
-  border-radius: 6px;
-  box-shadow: inset 0 0 5px #777779;
+  border: 1px solid #777779;
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 0 5px #777779;
+          box-shadow: inset 0 0 5px #777779;
 }
 
 .navElement:focus {
@@ -9184,7 +8986,7 @@ input:focus {
   height: 26px;
   padding-left: 4px;
   margin: 0 0 0 2px;
-  font-size: 12px;
+  font-size: .75em;
   line-height: 100%;
   color: #333335;
   background: transparent;
@@ -9204,8 +9006,8 @@ input:focus {
 #navClient .navIcon {
   padding: 0;
   overflow: hidden;
-  border-right: 2px solid #777779;
-  border-radius: 4px;
+  border-right: 1px solid #777779;
+  border-radius: 0;
 }
 
 #navSearch img {
@@ -9215,8 +9017,8 @@ input:focus {
 #clientLogo {
   height: 28px;
   background: #f1f2f2;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 #logo {
@@ -9238,7 +9040,7 @@ input:focus {
 }
 
 #sideBarWrapper {
-  position: fixed;
+  position: absolute;
   top: 45px;
   right: 0;
   bottom: 0;
@@ -9247,8 +9049,8 @@ input:focus {
   overflow-x: hidden;
   color: #f1f2f2;
   background: #333335;
-  background: url("../img/sideBarBg.png") repeat;
-  box-shadow: -1px 4px 6px #888888;
+  -webkit-box-shadow: -1px 4px 6px #888888;
+          box-shadow: -1px 4px 6px #888888;
 }
 
 #sideBarWrapper .jspDrag {
@@ -9281,7 +9083,6 @@ input:focus {
   line-height: 1;
   white-space: nowrap;
   background: #333335;
-  background: url("../img/sideBarBg.png") repeat;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -9296,25 +9097,17 @@ input:focus {
   vertical-align: middle;
 }
 
-.sideBarElement img {
-  position: relative;
-  display: inline;
-  width: 25px;
-  height: 25px;
-  max-width: 100%;
-  min-width: 20px;
-  padding: 5px 10px;
-  text-decoration: none;
-  vertical-align: middle;
-  border: 0;
-}
-
 .sideBarElement .icon {
   display: inline-block;
   width: 25px;
   height: 25px;
+  max-width: 100%;
+  min-width: 20px;
   padding: 6px 10px;
   margin-right: 5px;
+  text-decoration: none;
+  vertical-align: middle;
+  border: 0;
 }
 
 #coverWindowButton {
@@ -9370,51 +9163,31 @@ input:focus {
 }
 
 #slideMenu {
-  position: relative;
-  display: block;
-  margin: 0 5px;
-  font-weight: bold;
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #cccccc;
 }
 
-#slideMenu span {
-  vertical-align: middle;
-}
+/*#slideMenu img:hover {
+    opacity: @hoverOpacity;
+}*/
 
-#slideMenu img {
-  position: relative;
-  display: inline;
-  width: 25px;
-  height: 25px;
-  max-width: 100%;
-  min-width: 20px;
-  padding: 5px 10px;
-  text-decoration: none;
-  vertical-align: middle;
-  border: 0;
-}
-
-#slideMenu .icon {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
+.iconExpand {
   padding: 6px 10px;
-  margin-right: 5px;
+  margin: 0 5px;
 }
 
-#slideMenu:hover {
-  opacity: 0.5;
-}
-
-.iconExpand:hover {
-  opacity: 0.5;
-}
+/*.iconExpand:hover {
+    opacity: @hoverOpacity;
+}*/
 
 .borderBox {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.halfOpacity {
+  opacity: .5;
 }
 
 /*#popupContent, #popupContent .jspContainer, #popupContent .jspPane{
@@ -9472,23 +9245,8 @@ input:focus {
   outline: 0 none;
 }
 
-.red {
-  color: #991a36;
-  outline: 0 none;
-}
-
-.orange {
-  color: #d9591e;
-  outline: 0 none;
-}
-
 .green {
-  color: #659a41;
-  outline: 0 none;
-}
-
-.blue {
-  color: #488fcd;
+  color: #5aad52;
   outline: 0 none;
 }
 
@@ -9553,7 +9311,8 @@ input:focus {
         -ms-border-bottom-left-radius: 6px;
          -o-border-bottom-left-radius: 6px;
             border-bottom-left-radius: 6px;
-    box-shadow: 0 0 10px #888;
+    -webkit-box-shadow: 0 0 10px #888;
+            box-shadow: 0 0 10px #888;
   }
   #sideBarWrapper {
     position: absolute;
@@ -9563,7 +9322,8 @@ input:focus {
     height: auto;
     background: transparent;
     visibility: hidden;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
   #sideBarInnerWrapper {
     width: 200px;
@@ -9599,8 +9359,232 @@ input:focus {
   }
 }
 
+#statusesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+#navStatus {
+  margin-right: 0;
+  box-shadow: none;
+}
+
 #silverlightControlHost {
   top: 45px;
   left: 0;
   overflow: hidden;
+}
+
+/*  Colors */
+
+html {
+  font-size: 100%;
+}
+
+.borderBox {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#popupWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 305px;
+  height: 100%;
+  padding-top: 10px;
+  font-family: verdana, sans-serif;
+  pointer-events: none;
+  visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#popup {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  color: #333335;
+  border-top: 2px solid #cccccc;
+  visibility: visible !important;
+  -webkit-transform: translateZ(0);
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#popup a {
+  color: #333335;
+}
+
+#popupHeader {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 49px;
+  overflow: hidden;
+  font-size: 0.8888888888888888em;
+  line-height: 45px;
+  pointer-events: auto;
+  background: #fafafa;
+  border-right: 2px solid #cccccc;
+  border-bottom: 1px solid #333335;
+  border-bottom: 2px solid #cccccc;
+  border-left: 2px solid #cccccc;
+  visibility: visible;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#popupArrow {
+  position: absolute;
+  left: 50%;
+  z-index: 2;
+  float: left;
+  width: 28px;
+  height: 14px;
+  margin-top: -14px;
+  margin-left: -16px;
+  background: url('../img/popupArrowTop.png') no-repeat;
+  visibility: visible;
+}
+
+.flipArrow {
+  background: url('../img/popupArrowBot.png') no-repeat !important;
+}
+
+#popupBack,
+#popupClose {
+  position: absolute;
+  top: 0;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+
+#popupBack:hover,
+#popupClose:hover {
+  opacity: 0.5;
+}
+
+#popupBack:hover,
+#popupClose:hover {
+  opacity: 0.5;
+}
+
+#popupBack {
+  left: 0;
+  background: url('../img/popupBack.png') center center no-repeat;
+}
+
+#popupClose {
+  right: 0;
+  background: url('../img/popupClose.png') center center no-repeat;
+}
+
+#popupTitle {
+  width: 100%;
+  height: 100%;
+  max-width: 225px;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#popupContentWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 0;
+  overflow: visible !important;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#popupContent {
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  min-height: 43px;
+  overflow: auto;
+  font-size: 1em;
+  text-align: left;
+  background: #fafafa;
+  border-right: 2px solid #cccccc;
+  border-bottom: 2px solid #cccccc;
+  border-left: 2px solid #cccccc;
+  visibility: visible;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#popupContent .last {
+  padding-bottom: 13px;
+  border-bottom: none;
+}
+
+.popupContentRow {
+  display: block;
+  padding: 12px 23px;
+  cursor: pointer;
+  border-bottom: 1px solid #cccccc;
+}
+
+.popupContentRow:hover {
+  background: #cccccc;
+}
+
+@media only screen and (max-width: 390px) {
+  
+}
+
+#popupContentWrapper .jspPane {
+  width: 100% !important;
+  -webkit-box-shadow: 0 0 10px #777779;
+          box-shadow: 0 0 10px #777779;
+}
+
+#popupContentWrapper .jspDrag {
+  background: #777779;
+}
+
+#popupContentWrapper .jspCapTop {
+  display: block;
+  height: 49px;
+}
+
+#popupContentWrapper .jspCapBottom {
+  display: block;
+  height: 2px;
+}
+
+#popupWrapper,
+#popup,
+#popupContentWrapper .jspContainer {
+  pointer-events: none;
+}
+
+#popupWrapper .jspPane {
+  pointer-events: auto;
+}
+
+#popupWrapper .jspVerticalBar {
+  pointer-events: auto;
 }

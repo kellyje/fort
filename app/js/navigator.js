@@ -1,52 +1,39 @@
-// Uses AMD or browser globals to create a jQuery plugin.
+"use strict";
 
-// It does not try to register in a CommonJS environment since
-// jQuery is not likely to run in those environments.
-
-(function (factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD. Register as an anonymous module.
-        define(['jquery', 'doT'], factory);
-    } else {
-        // Browser globals
-        factory(jQuery, doT);
-    }
-}(function ($, doT) {
-    //TODO check $, doT, popup, jmousewheel, and jscrollpane are here: otherwise log error
-
+!function ($) {
     var navigator = null;
     var methods = {
-        init:function (conf, options) {
+        init: function (conf, options) {
             navigator = new Navigator(conf);
         },
-        coverWindow:function () {
+        coverWindow: function(){
             navigator.coverWindow();
         },
-        closeCoverWindow:function () {
+        closeCoverWindow: function(){
             navigator.closeCoverWindow();
         },
-        changeBusiness:function (clicked) {
+        changeBusiness: function(clicked){
             navigator.changeBusiness(clicked);
         },
-        changeAvatar:function (imgLoc) {
+        changeAvatar: function(imgLoc){
             navigator.changeAvatar(imgLoc);
         },
-        changeBusinessLogo:function (businessLogoUrl) {
+        changeBusinessLogo: function(businessLogoUrl){
             navigator.changeBusinessLogo(businessLogoUrl);
         },
-        closePopup:function () {
+        closePopup: function(){
             navigator.closePopup();
         },
-        hideSearch:function () {
+        hideSearch: function(){
             navigator.hideSearch();
         },
-        showSearch:function () {
+        showSearch: function(){
             navigator.showSearch();
         },
-        hideBusinessLogo:function () {
+        hideBusinessLogo: function(){
             navigator.hideBusinessLogo();
         },
-        showBusinessLogo:function () {
+        showBusinessLogo: function(){
             navigator.showBusinessLogo();
         }
     };
@@ -57,7 +44,7 @@
         // Method calling logic
 
         if (methods[method]) {
-            if (method !== 'init' && navigator === null) {
+            if(method!=='init'&&!navigator){
                 $.error('Navigator not initialized!');
                 return;
             }
@@ -68,10 +55,8 @@
             $.error('Method ' + method + ' does not exist on jQuery.navigator');
         }
 
-        return this.each(function () {
-        });
+        return this.each(function () {});
     };
-
     /**
      * Initializes the navigator
      * @param config Example below
@@ -132,24 +117,24 @@
         this.sideBarElementCount = 0;
 
         this.isCoverWindowButtonEnabled = false;
-        if (typeof(config.enableCoverWindowButton) !== 'undefined') {
+        if(typeof(config.enableCoverWindowButton)!=='undefined'){
             this.isCoverWindowButtonEnabled = config.enableCoverWindowButton;
         }
 
         this.isBackButtonEnabled = false;
-        if (typeof(config.enableBackButton) !== 'undefined') {
+        if(typeof(config.enableBackButton)!=='undefined'){
             this.isBackButtonEnabled = config.enableBackButton;
         }
 
         var businessLogoUrl = "";
         var businessLogoEnabled = false;
-        if (typeof (config.roles[0].businessLogoUrl) !== 'undefined') {
+        if(typeof (config.roles[0].businessLogoUrl)!=='undefined'){
             businessLogoUrl = config.roles[0].businessLogoUrl;
             businessLogoEnabled = true;
         }
 
         var avatarUrl = "img/emptyPerson.png"; //Default missing avatar image.
-        if (typeof (config.avatarUrl) !== 'undefined') {
+        if(typeof (config.avatarUrl)!=='undefined'){
             avatarUrl = config.avatarUrl;
         }
 
@@ -159,8 +144,8 @@
             topNav.attr('id', 'nav');
 
             var templateData = {
-                profileImgUrl:avatarUrl,
-                clientLogoUrl:businessLogoUrl
+                profileImgUrl: avatarUrl,
+                clientLogoUrl: businessLogoUrl
             };
             topNav.html(navTemplate(templateData));
 
@@ -190,10 +175,10 @@
         var initSideBarScrollBar = function () {
             var sideBarWrapperInnerDiv = $("#sideBarInnerWrapper");
             sideBarWrapperInnerDiv.jScrollPane({
-                horizontalGutter:0,
-                verticalGutter:0,
-                verticalDragMinHeight:25,
-                'showArrows':false
+                horizontalGutter: 0,
+                verticalGutter: 0,
+                verticalDragMinHeight: 25,
+                'showArrows': false
             });
 
             var sideBarScrollBar = sideBarWrapperInnerDiv.data('jsp');
@@ -258,7 +243,7 @@
                     href = "href='" + currentSection.url + "'";
                 }
                 var name = currentSection.name,
-                    color = currentSection.color,
+                    color = "green",
                     iconUrl = currentSection.iconUrl,
                     hoverIconUrl = currentSection.hoverIconUrl;
                 //TODO: Implement sprite selection.
@@ -268,13 +253,13 @@
                 var bgY = 'center';
 
                 var templateData = {
-                    href:href,
-                    color:color,
-                    iconUrl:iconUrl,
-                    hoverIconUrl:hoverIconUrl,
-                    bgX:bgX,
-                    bgY:bgY,
-                    name:name
+                    href: href,
+                    color: color,
+                    iconUrl: iconUrl,
+                    hoverIconUrl: hoverIconUrl,
+                    bgX: bgX,
+                    bgY: bgY,
+                    name: name
                 };
                 sBarElement += sideBarElementTemplate(templateData);
                 thisNavigator.sideBarElementCount++;
@@ -284,31 +269,29 @@
             //TODO: Reuse sideBarWrapperDiv object.
 
             $(".sideBarElement").on({
-                "touchstart mouseenter":function () {
+                "touchstart mouseenter": function () {
                     $(this).stop(true, true).addClass($(this).attr('data-color'));
                     //var image = $(this).find(".icon:first").css('background-image').replace(/^url|[\(\)]/g, '');
                     var hoverImg = $(this).attr("data-hoverIconUrl");//getSection(config.sections, $(this).find(".sectionName").html()).iconHoverUrl;//toHoverImage(image);
                     $(this).find(".icon").css('background-image', 'url(' + hoverImg + ')');
                 },
-                "mouseleave":function () {
-                    if ($(this).hasClass("clicked")) return;  //Does nothing if leaving an element that was just clicked.
+                "mouseleave": function () {
+                    if($(this).hasClass("clicked")) return;  //Does nothing if leaving an element that was just clicked.
 
                     $(this).stop(true, true).removeClass($(this).attr('data-color'));
                     var image = $(this).attr("data-iconUrl");//getSection(config.sections, $(this).find(".sectionName").html()).iconUrl;//$(this).find(".icon:first").css('background-image').replace(/^url|[\(\)]/g, '');
                     //image = image.replace('Color.', '.');
                     $(this).find(".icon").css('background-image', 'url(' + image + ')');
                 },
-                "touchend mouseup":function () {
+                "touchend mouseup": function() {
                     //Reset hover
                     //$(".sideBarElement.clicked").removeClass($(this).attr('data-color'));
 
                     //Reset the last clicked element
                     var currentClicked = this;
-                    $(".sideBarElement.clicked").each(function (index) {
+                    $(".sideBarElement.clicked").each(function(index){
                         //Skip the current clicked element.
-                        if (currentClicked === this) {
-                            return true;
-                        }
+                        if(currentClicked===this){return true;}
 
                         $(this).removeClass($(this).attr('data-color'));
                         var image = $(this).attr("data-iconUrl");
@@ -319,7 +302,7 @@
                     //Add the clicked class so mouseleave doesn't reset highlight.
                     $(this).addClass("clicked");
                 },
-                "click":function () {
+                "click": function () {
                     var name = $(this).find(".sectionName:first").text();
                     //TODO: Will this work every time?
                     var section = getSection(name);
@@ -334,7 +317,7 @@
         var slideMenuOpen = function () {
             $("#sideBarWrapper, #sideBarInnerWrapper, #sideBarWrapper .jspContainer, #sideBar")
                 .stop(true, false)
-                .animate({width:SIDEBAR_WIDTH_EXPANDED}, ANIMATION_SPEED);
+                .animate({width: SIDEBAR_WIDTH_EXPANDED}, ANIMATION_SPEED);
             $(".iconExpand").addClass("flip");
         };
 
@@ -342,7 +325,7 @@
             //clearTimeout(slideMenuTimeout);
             $("#sideBarWrapper, #sideBarInnerWrapper, #sideBarWrapper .jspContainer, #sideBar")
                 .stop(true, false)
-                .animate({width:SIDEBAR_WIDTH}, ANIMATION_SPEED);
+                .animate({width: SIDEBAR_WIDTH}, ANIMATION_SPEED);
             $(".iconExpand").removeClass("flip");
 
         };
@@ -374,6 +357,15 @@
 
             $('#nav').after(sideBarWrapperDiv);
 
+            $("#slideMenu").on({
+                mouseenter: function(){
+                    $(this).find(".iconExpand").addClass("halfOpacity");
+                },
+                mouseleave: function(){
+                    $(this).find(".iconExpand").removeClass("halfOpacity");
+                }
+            });
+
             setSideBarSections(allSections, initialAvailableSections);
 
             $(document).ready(function () {
@@ -382,10 +374,9 @@
                     sideBarDiv.addClass("hidden");
                     var offset = -1 * (sideBarDiv.offset().top + sideBarDiv.outerHeight());
                     sideBarDiv.css("top", offset);
-                }
-                /* else {
-                 $(".iconShow").addClass("rotateIcon");
-                 } */
+                } /* else {
+                    $(".iconShow").addClass("rotateIcon");
+                } */
             });
 
             //Add showMenuSpan to topNav.
@@ -407,7 +398,7 @@
             initSideBarScrollBar();
 
             /** Sidebar event listeners **/
-                //Listens for clicks outside of elements
+            //Listens for clicks outside of elements
             $(document).on('click touchend', function (e) {
                 var clicked = $(e.target);
                 //console.log("Clicked on: " + clicked.html());
@@ -535,9 +526,7 @@
                 },
                 //Hover Out
                 function () {
-                    if ($(document).width() <= MOBILE_WIDTH) {
-                        return;
-                    }
+                    if ($(document).width() <= MOBILE_WIDTH) { return; }
                     if (sideBarDiv.hasClass("expand")) {
                         slideMenuClosed();
                         sideBarDiv.removeClass("expand");
@@ -558,7 +547,7 @@
                     sideBarWrapperDiv.css('visibility', 'visible');
                     sideBarDiv.stop(false, true).animate(
                         {
-                            top:0
+                            top: 0
                         },
                         ANIMATION_SPEED
                     );
@@ -569,7 +558,7 @@
                     var offset = -1 * (sideBarDiv.offset().top + sideBarDiv.outerHeight());
                     sideBarDiv.stop(false, true).animate(
                         {
-                            top:offset
+                            top: offset
                         },
                         ANIMATION_SPEED,
                         function () {
@@ -594,9 +583,7 @@
             var role;
             for (role in roles) {
                 //console.log(roles[role]);
-                if (roles[role].name === name) {
-                    return roles[role];
-                }
+                if (roles[role].name === name) { return roles[role]; }
             }
             return null;
         };
@@ -605,27 +592,27 @@
             //var popup = new Popup(config, ".navElement");
 
             $("#navClient").optionsPopup({
-                id:"navClient",
-                title:name,
-                contents:[
-                    {"name":"Settings", id:"settings", url:settingsUrl},
-                    {"name":"Change Business", id:"changeBusiness"},
-                    {"name":"Log Out", url:logOutUrl}
+                id: "navClient",
+                title: name,
+                contents: [
+                    {"name": "Settings", id: "settings", url: settingsUrl},
+                    {"name": "Change Business", id: "changeBusiness"},
+                    {"name": "Log Out", url: logOutUrl}
                 ]
             });
 
             var changeBusinessMenu = {
-                id:"changeBusiness",
-                title:"Businesses",
-                contents:roles
+                id: "changeBusiness",
+                title: "Businesses",
+                contents: roles
             };
             $("#navClient").optionsPopup('addMenu', changeBusinessMenu);
 
             $(document).on("popup.created", function () {
                 $("#popupContentWrapper").jScrollPane({
-                    horizontalGutter:0,
-                    verticalGutter:0,
-                    'showArrows':false
+                    horizontalGutter: 0,
+                    verticalGutter: 0,
+                    'showArrows': false
                 });
             });
 
@@ -633,14 +620,14 @@
                 $("#popupContentWrapper").data('jsp').reinitialise();
             });
 
-            $(document).on("popupEvent", function (e, data) {
+            $(document).on("popup.action", function (e, data) {
                 //console.log(data);
                 if (($(data).attr("id") === "navClient") && roles.length <= 1) {
                     $("#changeBusiness").css("display", "none");
                 }
                 var name = $(data).text();
                 var role = getRole(name);
-                if (role !== null) {
+                if (role) {
                     $(e.target).trigger("roleSelected", role);
                 }
 
@@ -660,7 +647,7 @@
             //var businessId = clicked.attr("id");
             var name = clicked.text();
             var business = getBusiness(name);
-            if (business === null) {
+            if (!business) {
                 console.log("Business not found!");
                 return;
             }
@@ -706,7 +693,7 @@
             $("#navSearch").hide();
         };
 
-        this.hideBusinessLogo = function () {
+        this.hideBusinessLogo = function() {
             $("#clientLogo").hide();
         };
 
@@ -714,7 +701,7 @@
             $("#navSearch").show();
         };
 
-        this.showBusinessLogo = function () {
+        this.showBusinessLogo = function(){
             $('#clientLogo').show();
         };
 
@@ -724,10 +711,10 @@
             sideBarDiv.removeClass("expand");
             $("#sideBarWrapper")
                 .stop(false, true)
-                .animate({width:'100%'}, ANIMATION_SPEED);
+                .animate({width: '100%'}, ANIMATION_SPEED);
             $("#sideBarInnerWrapper, #sideBarWrapper .jspContainer, #sideBar")
                 .stop(false, true)
-                .animate({width:SIDEBAR_WIDTH_EXPANDED}, ANIMATION_SPEED);
+                .animate({width: SIDEBAR_WIDTH_EXPANDED}, ANIMATION_SPEED);
             sideBarDiv.addClass("cover");
             $(".iconExpand").addClass("flip");
         };
@@ -742,5 +729,6 @@
         initTopNav();
         initSideBar();
         initPopup();
+        $(document).trigger("navigator.loaded");
     }
-}));
+}(window.jQuery);

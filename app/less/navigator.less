@@ -1,5 +1,3 @@
-@import "popup.less";
-
 /* navigator css stylesheet */
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -72,14 +70,11 @@ table {
 
 /*  Colors */
 @lightCharcoal: #777779;
-@lighterGrey: #FAFAFA;
+@lighterGrey: #f2f2f2;
 @lightGrey: #F1F2F2;
 @darkGrey: #CCCCCC;
 @charcoal: #333335;
-@orange: #D9591E;
-@green: #659A41;
-@blue: #488FCD;
-@red: #991A36;
+@green: #5aad52;
 @black: #000;
 
 @navBorderColor: @lightCharcoal;
@@ -93,8 +88,8 @@ table {
 @imageHeight: 20px;
 @iconPadding: 4px;
 
-@borderRadius: 4px;
-@borderSize: 2px;
+@borderRadius: 0;
+@borderSize: 1px;
 
 /*  Positioning  */
 @navHeight: 45px;
@@ -162,13 +157,14 @@ input:focus {
 }
 
 #nav {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: 2;
     width: 100%;
     height: @navHeight;
     line-height: @navHeight - 4;
+    -webkit-box-shadow: 0 1px 6px #888;
     box-shadow: 0 1px 6px #888;
     text-align: left;
 
@@ -178,15 +174,6 @@ input:focus {
     }
 
     .navColor;
-    background: url("../img/navBg.png") 0 0 repeat-x;
-    /*background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, @charcoal), color-stop(1, rgb(85, 85, 86)));*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555556', endColorstr='#222224'); /* IE6-9
-    background-image: linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
-    background-image: -o-linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
-    background-image: -moz-linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
-    background-image: -webkit-linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
-    background-image: -ms-linear-gradient(bottom, rgb(34,34,36) 31%, rgb(85,85,86) 100%);
-    background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.31, rgb(34,34,36)),color-stop(1, rgb(85,85,86)));*/
 }
 #navContainer {
     height: 100%;
@@ -195,7 +182,7 @@ input:focus {
 *display: inline;
 zoom: 1;*/
     padding-left: 50px;
-    font-size: 100%; //TODO: Make this dynamic.
+    font-size: 1em;
 //line-height: @navHeightMax - 4;
 
     .last {
@@ -204,13 +191,14 @@ zoom: 1;*/
 }
 .roundedIcon {
     border: @borderSize solid @navBorderColor;
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 .navElement {
     &:focus {
         outline: white solid thin;
     }
+    -webkit-box-shadow: inset 0 0 5px #777779;
     box-shadow: inset 0 0 5px #777779;
     .roundedIcon;
     background: white;
@@ -233,7 +221,7 @@ zoom: 1;*/
         border: 0;
         line-height: 100%;
         height: @imageHeight + @iconPadding*2 - 2;
-        font-size: 12px; /*TODO: Change to relative font size (.75em)*/
+        font-size: .75em;
         color: @charcoal;
         margin: 0 0 0 2px;
         padding-left: 4px;
@@ -299,7 +287,7 @@ zoom: 1;*/
 }
 
 #sideBarWrapper {
-    position: fixed;
+    position: absolute;
     top: @navHeight;
     bottom: 0;
     right: 0;
@@ -307,11 +295,9 @@ zoom: 1;*/
     width: @sideBarWrapperWidth;
     z-index: 2;
     .navColor;
-/*TODO: Give box shadows vendor prefixes.*/
+    -webkit-box-shadow: -1px 4px 6px #888;
     box-shadow: -1px 4px 6px #888;
     color: @lightGrey;
-
-    background: url("../img/sideBarBg.png") repeat;
 }
 
 #sideBarWrapper .jspDrag {
@@ -346,10 +332,9 @@ zoom: 1;*/
     line-height: 1;
 
     .navColor;
-    background: url("../img/sideBarBg.png") repeat;
 }
 
-.sideBarElement {
+.sideBarElement{
     display: block;
     position: relative;
     margin: 0 5px;
@@ -359,27 +344,17 @@ zoom: 1;*/
         vertical-align: middle;
     }
 
-    img {
-        display: inline;
-        max-width: 100%;
-        min-width: 20px;
-        position: relative;
-
-        width: 25px;
-        height: 25px;
-        vertical-align: middle;
-        padding: 5px 10px;
-        text-decoration: none;
-        border: 0;
-    }
-
-//TODO: Eliminate most of this.
     .icon {
         width: 25px;
         height: 25px;
         display: inline-block;
         padding: 6px 10px;
         margin-right: 5px;
+        max-width: 100%;
+        min-width: 20px;
+        vertical-align: middle;
+        text-decoration: none;
+        border: 0;
     }
 }
 
@@ -434,21 +409,29 @@ zoom: 1;*/
 #slideMenu {
     border-top: 1px solid @darkGrey;
     border-bottom: 1px solid @darkGrey;
-    .sideBarElement;
 }
 
-#slideMenu:hover {
+/*#slideMenu img:hover {
     opacity: @hoverOpacity;
+}*/
+
+.iconExpand{
+    margin: 0 5px;
+    padding: 6px 10px;
 }
 
-.iconExpand:hover {
+/*.iconExpand:hover {
     opacity: @hoverOpacity;
-}
+}*/
 
 .borderBox {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+.halfOpacity {
+    opacity: .5;
 }
 
 /*#popupContent, #popupContent .jspContainer, #popupContent .jspPane{
@@ -466,7 +449,7 @@ zoom: 1;*/
     .rotate(0deg);
 }
 
-.iconExpand, .iconShow { //TODO: Fix problem w/ android 2.3 browser. http://jsfiddle.net/KrRsy/5/
+.iconExpand, .iconShow {
     -webkit-transition: -webkit-transform .3s ease-in-out;
     -moz-transition: -moz-transform .3s ease-in-out;
     -ms-transition: -ms-transform .3s ease-in-out;
@@ -510,16 +493,7 @@ zoom: 1;*/
 .createColors('darkGrey')
 
 ;
-.createColors('red')
-
-;
-.createColors('orange')
-
-;
 .createColors('green')
-
-;
-.createColors('blue')
 
 ;
 .createColors('lightCharcoal')
@@ -580,6 +554,7 @@ zoom: 1;*/
         height: auto;
         width: @sideBarExpandedWidth;
 
+        -webkit-box-shadow: 0 0 10px #888;
         box-shadow: 0 0 10px #888;
         padding: 0;
         /*background: @lightGrey;
@@ -604,6 +579,7 @@ zoom: 1;*/
         height: auto;
         background: transparent;
         width: @sideBarExpandedWidth;
+        -webkit-box-shadow: none;
         box-shadow: none;
         visibility: hidden;
         //Allows jScrollPane to respect box shadow outside of wrapper
@@ -665,6 +641,26 @@ zoom: 1;*/
     #content {
         //background: @green;
     }
+}
+
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+//                               Statuses
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+#statusesContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: -1;
+}
+
+#navStatus{
+    margin-right: 0;
+    box-shadow: none;
 }
 
 //--------------------------------------------------------------------------------------------------------------------//
