@@ -1,0 +1,183 @@
+/*  Colors */
+html {
+  font-size: 100%;
+}
+.borderBox {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#popupWrapper {
+  font-family: verdana, sans-serif;
+  position: fixed;
+  height: 100%;
+  width: 305px;
+  padding-top: 10px;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 10;
+  pointer-events: none;
+  -webkit-transform: translateZ(0);
+}
+#popup {
+  position: relative;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  color: #333335;
+  visibility: visible !important;
+  z-index: 10;
+  -webkit-transform: translateZ(0);
+  border-top: 2px solid #cccccc;
+}
+#popup a {
+  color: #333335;
+}
+#popupHeader {
+  position: absolute;
+  z-index: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #333335;
+  line-height: 45px;
+  font-size: 0.8888888888888888em;
+  background: #fafafa;
+  border-bottom: 2px solid #cccccc;
+  visibility: visible;
+  border-right: 2px solid #cccccc;
+  border-left: 2px solid #cccccc;
+  height: 49px;
+  pointer-events: auto;
+}
+#popupArrow {
+  position: absolute;
+  float: left;
+  margin-top: -14px;
+  margin-left: -16px;
+  /* Half width */
+
+  visibility: visible;
+  left: 50%;
+  z-index: 2;
+  height: 14px;
+  width: 28px;
+  background: url('../img/popupArrowTop.png') no-repeat;
+}
+.flipArrow {
+  background: url('../img/popupArrowBot.png') no-repeat !important;
+}
+#popupBack,
+#popupClose {
+  position: absolute;
+  cursor: pointer;
+  height: 45px;
+  width: 45px;
+  top: 0;
+}
+#popupBack:hover,
+#popupClose:hover {
+  opacity: 0.5;
+}
+#popupBack:hover,
+#popupClose:hover {
+  opacity: 0.5;
+}
+#popupBack {
+  left: 0;
+  background: url('../img/popupBack.png') center center no-repeat;
+}
+#popupClose {
+  right: 0;
+  background: url('../img/popupClose.png') center center no-repeat;
+}
+#popupTitle {
+  white-space: nowrap;
+  text-align: center;
+  max-width: 225px;
+  overflow: hidden;
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#popupContentWrapper {
+  position: relative;
+  overflow: visible !important;
+  padding-top: 0px;
+  height: 100%;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#popupContent {
+  visibility: visible;
+  position: relative;
+  overflow: auto;
+  min-height: 43px;
+  max-height: 100%;
+  width: 100%;
+  text-align: left;
+  font-size: 1em;
+  background: #fafafa;
+  border-right: 2px solid #cccccc;
+  border-left: 2px solid #cccccc;
+  border-bottom: 2px solid #cccccc;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#popupContent .last {
+  border-bottom: none;
+  padding-bottom: 13px;
+}
+.popupContentRow {
+  display: block;
+  cursor: pointer;
+  padding: 12px 23px;
+  border-bottom: 1px solid #cccccc;
+}
+.popupContentRow:hover {
+  background: #cccccc;
+}
+@media only screen and (max-width: 390px) {
+  
+}
+#popupContentWrapper .jspPane {
+  width: 100% !important;
+  -webkit-box-shadow: 0 0 10px #777779;
+  box-shadow: 0 0 10px #777779;
+}
+#popupContentWrapper .jspDrag {
+  background: #777779;
+}
+#popupContentWrapper .jspCapTop {
+  display: block;
+  height: 49px;
+}
+#popupContentWrapper .jspCapBottom {
+  display: block;
+  height: 2px;
+}
+#popupWrapper,
+#popup,
+#popupContentWrapper .jspContainer {
+  pointer-events: none;
+}
+#popupWrapper .jspPane {
+  pointer-events: auto;
+}
+#popupWrapper .jspVerticalBar {
+  pointer-events: auto;
+}

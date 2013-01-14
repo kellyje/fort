@@ -1,0 +1,619 @@
+/* navigator css stylesheet */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*******************************************************
+***                   END RESET                      ***
+*******************************************************/
+/*NOTES:    The following are linked values:
+                  #nav height = .navElement height
+                  (#nav height + #nav padding-top/bottom) = #sideBar top = #content padding-top
+                  #sideBar width = #rightColumn .columnContent padding-right
+                  #sideBar width = (#nav height + #nav padding-top/bottom) ?
+*/
+/*  CONSTANTS  */
+/*  Colors */
+/*  Other Vars  */
+/*  Positioning  */
+/*  MAIN  */
+html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: #f6f7f7;
+  color: #333335;
+  font-family: segoe, verdana, sans-serif;
+  font-size: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+}
+::selection {
+  text-shadow: none;
+  background: #488fcd;
+  color: white;
+}
+/* For modern browsers */
+.clearFix:before,
+.clearFix:after {
+  content: "";
+  display: table;
+}
+.clearFix:after {
+  clear: both;
+}
+/* For IE 6/7 (trigger hasLayout) */
+.clearFix {
+  zoom: 1;
+}
+a {
+  color: #f1f2f2;
+  text-decoration: none;
+  cursor: pointer;
+}
+input:focus {
+  outline: none;
+}
+.navColor {
+  background: #333335;
+}
+#nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 45px;
+  line-height: 41px;
+  -webkit-box-shadow: 0 1px 6px #888;
+  box-shadow: 0 1px 6px #888;
+  text-align: left;
+  background: #333335;
+}
+#nav img {
+  max-height: 100%;
+  vertical-align: middle;
+}
+#navContainer {
+  height: 100%;
+  display: inline-block;
+  /* ie 6/7 fix
+*display: inline;
+zoom: 1;*/
+
+  padding-left: 50px;
+  font-size: 1em;
+}
+#navContainer .last {
+  margin-right: 0;
+}
+.roundedIcon {
+  border: 1px solid #777779;
+  border-radius: 0;
+}
+.navElement {
+  -webkit-box-shadow: inset 0 0 5px #777779;
+  box-shadow: inset 0 0 5px #777779;
+  border: 1px solid #777779;
+  border-radius: 0;
+  background: white;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 60px;
+  /*Spacing between nav elements*/
+
+  line-height: normal;
+}
+.navElement:focus {
+  outline: white solid thin;
+}
+.navElement a {
+  display: inline-block;
+}
+.navElement .navIcon {
+  height: 28px;
+}
+.navElement input {
+  border: 0;
+  line-height: 100%;
+  height: 26px;
+  font-size: .75em;
+  color: #333335;
+  margin: 0 0 0 2px;
+  padding-left: 4px;
+  background: transparent;
+}
+.navElement img {
+  height: 20px;
+  vertical-align: middle;
+}
+#navClient {
+  padding: 0;
+  background-color: #333335;
+}
+#navClient .navIcon {
+  padding: 0;
+  border-right: 1px solid #777779;
+  border-radius: 0;
+  overflow: hidden;
+}
+#navSearch img {
+  padding: 4px;
+}
+#clientLogo {
+  background: #f1f2f2;
+  height: 28px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#logo {
+  position: absolute;
+  right: 10px;
+  top: 2px;
+  bottom: 2px;
+  margin: auto;
+}
+#showMenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 10px;
+  border-left: 2px solid;
+  height: 100%;
+}
+#sideBarWrapper {
+  position: absolute;
+  top: 45px;
+  bottom: 0;
+  right: 0;
+  overflow-x: hidden;
+  width: 55px;
+  z-index: 2;
+  background: #333335;
+  -webkit-box-shadow: -1px 4px 6px #888888;
+  box-shadow: -1px 4px 6px #888888;
+  color: #f1f2f2;
+}
+#sideBarWrapper .jspDrag {
+  background: #fff;
+}
+#sideBarWrapper .jspCapBottom {
+  height: 40px;
+}
+#sideBarInnerWrapper {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+#sideBar {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  overflow-y: auto;
+  width: 55px;
+  max-height: 100%;
+  right: 0;
+  padding: 0 0 40px 0;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  line-height: 1;
+  background: #333335;
+}
+.sideBarElement {
+  display: block;
+  position: relative;
+  margin: 0 5px;
+  font-weight: bold;
+}
+.sideBarElement span {
+  vertical-align: middle;
+}
+.sideBarElement .icon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  padding: 6px 10px;
+  margin-right: 5px;
+  max-width: 100%;
+  min-width: 20px;
+  vertical-align: middle;
+  text-decoration: none;
+  border: 0;
+}
+#coverWindowButton {
+  position: absolute;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 200px;
+  height: 40px;
+  border-top: 1px solid #cccccc;
+  background: #333335;
+  z-index: 1;
+  padding: 0 5px;
+  cursor: pointer;
+}
+#contentWrapper {
+  overflow: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  height: 100%;
+  width: 100%;
+}
+#content {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: visible;
+  visibility: visible;
+  position: relative;
+  padding-top: 45px;
+  padding-right: 55px;
+}
+#remoteContent {
+  width: 100% !important;
+  height: 100% !important;
+}
+#updates {
+  padding: 15px;
+}
+#expandMenuButton {
+  display: inline-block;
+  width: 100%;
+}
+#slideMenu {
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+/*#slideMenu img:hover {
+    opacity: @hoverOpacity;
+}*/
+.iconExpand {
+  margin: 0 5px;
+  padding: 6px 10px;
+}
+/*.iconExpand:hover {
+    opacity: @hoverOpacity;
+}*/
+.borderBox {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.halfOpacity {
+  opacity: .5;
+}
+/*#popupContent, #popupContent .jspContainer, #popupContent .jspPane{
+    max-height: 100%;
+    width: 100%;
+}*/
+.androidFixedPositionFix {
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  -ms-transition: -ms-transform 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  zoom: 1;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  /* IE 9 */
+
+  -o-transform: rotate(0deg);
+  /* Opera */
+
+  -moz-transform: rotate(0deg);
+  /* Firefox */
+
+  transform: rotate(0deg);
+}
+.iconExpand,
+.iconShow {
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  -ms-transition: -ms-transform 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  zoom: 1;
+}
+.rotateIcon {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  /* IE 9 */
+
+  -o-transform: rotate(-90deg);
+  /* Opera */
+
+  -moz-transform: rotate(-90deg);
+  /* Firefox */
+
+  transform: rotate(-90deg);
+}
+.flip {
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  /* IE 9 */
+
+  -o-transform: rotate(-180deg);
+  /* Opera */
+
+  -moz-transform: rotate(-180deg);
+  /* Firefox */
+
+  transform: rotate(-180deg);
+}
+.lightGrey {
+  color: #f1f2f2;
+  outline: 0 none;
+}
+.darkGrey {
+  color: #cccccc;
+  outline: 0 none;
+}
+.green {
+  color: #5aad52;
+  outline: 0 none;
+}
+.lightCharcoal {
+  color: #777779;
+  outline: 0 none;
+}
+.charcoal {
+  color: #333335;
+  outline: 0 none;
+}
+.black {
+  color: #000000;
+  outline: 0 none;
+}
+@media only screen and (max-width: 800px) {
+  #nav {
+    position: absolute;
+    height: 45px;
+  }
+  #navContainer {
+    line-height: 40px;
+  }
+  #logo {
+    display: none;
+  }
+  #navClient .navIcon {
+    border: 0;
+    padding: 0;
+  }
+  #clientLogo {
+    display: none;
+    height: 100%;
+    width: 0;
+    margin-left: 0;
+    padding: 0;
+  }
+  #navSearch input {
+    display: none;
+  }
+  #navSearch {
+    display: none;
+  }
+  #showMenu {
+    display: inline;
+  }
+  #sideBar {
+    right: 0;
+    height: auto;
+    width: 200px;
+    -webkit-box-shadow: 0 0 10px #888;
+    box-shadow: 0 0 10px #888;
+    padding: 0;
+    /*background: @lightGrey;
+          color: @charcoal;*/
+  
+    -webkit-border-bottom-right-radius: 6px;
+    -webkit-border-bottom-left-radius: 6px;
+    -moz-border-bottom-right-radius: 6px;
+    -moz-border-bottom-left-radius: 6px;
+    -ms-border-bottom-right-radius: 6px;
+    -ms-border-bottom-left-radius: 6px;
+    -o-border-bottom-right-radius: 6px;
+    -o-border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  #sideBarWrapper {
+    position: absolute;
+    display: inline-block;
+    top: 45px;
+    height: auto;
+    background: transparent;
+    width: 200px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    visibility: hidden;
+  }
+  #sideBarInnerWrapper {
+    width: 200px;
+  }
+  #slideMenu {
+    display: none;
+  }
+  #content {
+    padding-right: 0;
+    height: 100%;
+  }
+  #coverWindowButton {
+    display: none;
+  }
+  #sideBarWrapper .jspCapBottom {
+    height: 0;
+    display: none;
+  }
+}
+@media only screen and (max-width: 390px) {
+  #logo {
+    display: none;
+  }
+  #showMenu {
+    display: inline;
+  }
+  .navElement {
+    margin-right: 10%;
+  }
+  #nav .last {
+    margin-right: 0;
+  }
+}
+#statusesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: -1;
+}
+#navStatus {
+  margin-right: 0;
+  box-shadow: none;
+}
+#silverlightControlHost {
+  left: 0;
+  top: 45px;
+  overflow: hidden;
+}
