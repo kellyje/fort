@@ -10,31 +10,49 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title></title>
-    <meta name="description" content=""/>
-    <meta name="viewport" content="width=device-width"/>
-
+    <title>Fort Library</title>
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="cleartype" content="on">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="styles/main.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:400' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
-<div id="main" class="container" style="margin-top:50px">
-    <div class="hero-unit">
-        <h1>Cheerio!</h1>
-
-        <p>You now have</p>
-        <ul>
-            <li>HTML5 boilerplate</li>
-            <li>Twitter Bootstrap with LESS</li>
-            <li>jQuery</li>
-            <li>Modernizr.js</li>
-        </ul>
-        <p>installed.</p>
-
-        <h3>Enjoy coding! - Yeoman</h3>
-    </div>
+<body onload="prettyPrint()">
+<div id="main" class="container-fluid span12" style="margin-top:50px">
+        <!-- Template Start -->
+        <div class="page-header">
+            <h2>About</h2>
+        </div>
+        <div class="row-fluid">
+            <span class="span5">
+                <p class="about"><b>Fort</b> is a growing library of Fundamental Open-source Responsive Tools. The
+                    components were designed with mobile browsing in mind and should work on Android 2.3+, iOS4+,
+                    and many others.</p>
+            </span>
+            <span class="span7">
+                <div class="hero-unit">
+                    <h3>Download</h3>
+                    <p>Click on the links below to go to the Fort github repository or download it as a zip.</p>
+                    <p>
+                        <a href="https://github.com/FoundOPS/fort" class="btn btn-primary">Github</a>
+                        <a href="https://github.com/FoundOPS/fort/zipball/master" class="btn btn-primary">.zip</a>
+                    </p>
+                </div>
+            </span>
+        </div>
+        <hr>
+        <div class="well">
+            <h3>Popup Examples</h3>
+            <p><a id="button1">Popups</a> will work on any element with the id passed to either the jQuery plugin or the javascript object constructor.</p>
+            <p><button id="button2" class="btn">Show Popup!</button></p>
+        </div>
+        <!-- Template End -->
 </div>
 
 <!--[if lt IE 7]>
@@ -53,13 +71,14 @@
 
 <!--Add navigator-->
 <script src="js/vendor/jquery.jscrollpane/jquery.jscrollpane.js"></script>
-<script src="js/popup.js"></script>
-
 <script src="js/vendor/doT/doT.js"></script>
+<script src="js/vendor/prettify/prettify.js"></script>
+<script src="js/popup.js"></script>
 <script src="js/navigator.js"></script>
 
 <!--main page-->
 <script src="js/main.js"></script>
+<script src="js/popupExample.js"></script>
 
 <!-- endbuild -->
 
