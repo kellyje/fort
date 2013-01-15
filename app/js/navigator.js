@@ -239,6 +239,7 @@
                 //console.log(availableSections[section]);
                 var currentSection = getSection(availableSections[section]), //config.sections[section];
                     href = "";
+                if(!currentSection)continue;
                 if (typeof (currentSection.url) !== "undefined") {
                     href = "href='" + currentSection.url + "'";
                 }
@@ -252,6 +253,9 @@
                 var bgX = 'center';
                 var bgY = 'center';
 
+                //if(currentSection.bgX)bgX = currentSection.bgX;
+                //if(currentSection.bgY)bgY = currentSection.bgY;
+
                 var templateData = {
                     href: href,
                     color: color,
@@ -264,6 +268,7 @@
                 sBarElement += sideBarElementTemplate(templateData);
                 thisNavigator.sideBarElementCount++;
             }
+            console.log("HTML: "+sBarElement);
             $("#sideBarSections").html(sBarElement);
 
             //TODO: Reuse sideBarWrapperDiv object.
@@ -375,8 +380,8 @@
                     var offset = -1 * (sideBarDiv.offset().top + sideBarDiv.outerHeight());
                     sideBarDiv.css("top", offset);
                 } /* else {
-                    $(".iconShow").addClass("rotateIcon");
-                } */
+                 $(".iconShow").addClass("rotateIcon");
+                 } */
             });
 
             //Add showMenuSpan to topNav.
@@ -398,7 +403,7 @@
             initSideBarScrollBar();
 
             /** Sidebar event listeners **/
-            //Listens for clicks outside of elements
+                //Listens for clicks outside of elements
             $(document).on('click touchend', function (e) {
                 var clicked = $(e.target);
                 //console.log("Clicked on: " + clicked.html());
